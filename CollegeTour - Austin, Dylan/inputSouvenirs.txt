@@ -12,20 +12,6 @@ a
 0
 a
 0
-Canopy
-96.75
-Flag
-15.76
-Keychain
-7.98
-a
-0
-a
-0
-a
-0
-a
-0
 Keystrap
 5.66
 ToteBag
@@ -130,20 +116,6 @@ Key ring
 6.94
 License plate cover
 11.85
-a
-0
-a
-0
-a
-0
-a
-0
-Coaster set
-14.94
-Face paint
-7.53 
-Sports chair
-85.99
 a
 0
 a

@@ -16,16 +16,16 @@ a
 Arizona State University
 1007
 Massachussetts Institute of Technology
-1959
+1758
 Northwestern
-1311
+1959
 Ohio State University
 1235
-Saddleback
+Saddleback College
 1378
-University of California, Irvine(UCI)
+University of California, Irvine (UCI)
 1375
-University of California, Los Angeles(UCLA)
+University of California, Los Angeles (UCLA)
 1396
 University of Michigan
 1368
@@ -58,11 +58,11 @@ Northwestern
 2013
 Ohio State University
 2231
-Saddleback
+Saddleback College
 29.3
-University of California, Irvine(UCI)
+University of California, Irvine (UCI)
 20.2
-University of California, Los Angeles(UCLA)
+University of California, Los Angeles (UCLA)
 47.9
 University of Michigan
 2229
@@ -71,6 +71,6 @@ University of Oregon
 University of the Pacific
 368
 University of Wisconsin
-1963
-University of Texas
 1758
+University of Texas
+1963
