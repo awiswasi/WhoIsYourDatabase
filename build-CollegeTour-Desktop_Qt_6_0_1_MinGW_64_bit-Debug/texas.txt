@@ -1,0 +1,76 @@
+University of Texas
+Coaster
+14.94
+Face paint
+7.53
+Sports chair
+85.99
+a
+0
+a
+0
+a
+0
+a
+0
+Arizona State University
+1007
+Massachussetts Institute of Technology
+1758
+Northwestern
+1959
+Ohio State University
+1235
+Saddleback College
+1378
+University of California, Irvine (UCI)
+1375
+University of California, Los Angeles (UCLA)
+1396
+University of Michigan
+1368
+University of Oregon
+2073
+University of the Pacific
+1720
+University of Wisconsin
+1183
+California State University, Fullerton
+Canopy
+96.75
+Flag
+15.76
+Keychain
+7.98
+a
+0
+a
+0
+a
+0
+a
+0
+Arizona State University
+364
+Massachussetts Institute of Technology
+2968
+Northwestern
+2013
+Ohio State University
+2231
+Saddleback College
+29.3
+University of California, Irvine (UCI)
+20.2
+University of California, Los Angeles (UCLA)
+47.9
+University of Michigan
+2229
+University of Oregon
+884
+University of the Pacific
+368
+University of Wisconsin
+1758
+University of Texas
+1963

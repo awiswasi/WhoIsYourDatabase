@@ -1,0 +1,220 @@
+Massachusetts Institute of Technology (MIT)
+2636
+Northwestern
+1756
+Ohio State University
+1865
+Saddleback College
+379
+University of  Michigan
+1956
+University of California, Irvine (UCI)
+375
+University of California, Los Angeles (UCLA)
+397
+University of Oregon
+1343
+University of the Pacific
+720
+University of Wisconsin
+1684
+Arizona State University
+2636
+Northwestern
+993
+Ohio State University
+772
+Saddleback College
+2989
+University of Michigan
+803
+University of California, Irvine (UCI)
+2986
+University of California, Los Angeles (UCLA)
+2998
+University of Oregon
+3107
+University of the Pacific
+3057
+University of Wisconsin
+1125
+Arizona State University
+1756
+Massachusetts Institute of Technology (MIT)
+993
+Ohio State University
+335
+Saddleback College
+2033
+University of Michigan
+270
+University of California, Irvine (UCI)
+2030
+University of California, Los Angeles (UCLA)
+2043
+University of Oregon
+2151
+University of the Pacific
+2102
+University of Wisconsin
+145
+Arizona State University
+1865
+Massachusetts Institute of Technology (MIT)
+772
+Northwestern
+335
+Saddleback College
+2252
+University of Michigan
+184
+University of California, Irvine (UCI)
+2248
+University of California, Los Angeles (UCLA)
+2261
+University of Oregon
+2241
+University of the Pacific
+2412
+University of Wisconsin
+503
+Arizona State University
+379
+Massachusetts Institute of Technology (MIT)
+2989
+Northwestern
+2033
+Ohio State University
+2252
+University of Michigan
+2249
+University of California, Irvine (UCI)
+16
+University of California, Los Angeles (UCLA)
+66.3
+University of Oregon
+906
+University of the Pacific
+390
+University of Wisconsin
+1981
+Arizona State University
+1956
+Massachusetts Institute of Technology (MIT)
+803
+Northwestern
+270
+Ohio State University
+184
+Saddleback College
+2249
+University of California, Irvine (UCI)
+2245
+University of California, Los Angeles (UCLA)
+2252
+University of Oregon
+2347
+University of the Pacific
+2318
+University of Wisconsin
+391
+Arizona State University
+375
+Massachusetts Institute of Technology (MIT)
+2986
+Northwestern
+2030
+Ohio State University
+2248
+Saddleback College
+16
+University of Michigan
+2245
+University of California, Los Angeles (UCLA)
+51.5
+University of Oregon
+899
+University of the Pacific
+383
+University of Wisconsin
+1978
+Arizona State University
+397
+Massachusetts Institute of Technology (MIT)
+2998
+Northwestern
+2043
+Ohio State University
+2261
+Saddleback College
+66.3
+University of Michigan
+2252
+University of California, Irvine (UCI)
+51.5
+University of Oregon
+849
+University of the Pacific
+333
+University of Wisconsin
+1991
+Arizona State University
+1343
+Massachusetts Institute of Technology (MIT)
+3107
+Northwestern
+2151
+Ohio State University
+2241
+Saddleback College
+906
+University of Michigan
+2347
+University of California, Irvine (UCI)
+899
+University of California, Los Angeles (UCLA)
+849
+University of the Pacific
+517
+University of Wisconsin
+2111
+Arizona State University
+720
+Massachusetts Institute of Technology (MIT)
+3057
+Northwestern
+2102
+Ohio State University
+2412
+Saddleback College
+390
+University of Michigan
+2318
+University of California, Irvine (UCI)
+383
+University of California, Los Angeles (UCLA)
+333
+University of Oregon
+517
+University of Wisconsin
+2052
+Arizona State University
+1684
+Massachusetts Institute of Technology (MIT)
+1125
+Northwestern
+145
+Ohio State University
+503
+Saddleback College
+1981
+University of Michigan
+391
+University of California, Irvine (UCI)
+1978
+University of California, Los Angeles (UCLA)
+1991
+University of Oregon
+2111
+University of the Pacific
+2052
