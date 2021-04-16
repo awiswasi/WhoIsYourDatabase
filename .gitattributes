@@ -1,1 +1,6 @@
-* text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.ui text eol=lf
+*.qrc text eol=lf
+
+*.png binary
