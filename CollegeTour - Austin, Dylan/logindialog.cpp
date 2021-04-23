@@ -1,6 +1,8 @@
 #include "logindialog.h"
 #include "ui_logindialog.h"
 #include <QTimer>
+#include <QDialog>
+#include <QMessageBox>
 
 loginDialog::loginDialog(QWidget *parent) :
     QDialog(parent),
@@ -30,6 +32,8 @@ void loginDialog::on_loginButton_clicked()
 {
     QString username = "admin";
     QString password = "pass";
+    QString errorMsg = "Incorrect username or password";
+    QMessageBox messageBox;
 
 
     QString userInput = ui->userEdit->text();
@@ -40,6 +44,7 @@ void loginDialog::on_loginButton_clicked()
      loggedIn = true;
      this->close();
     }
-    else
-        this->close();
+    else{
+        messageBox.warning(0,"Error","Incorrect username or password");
+        messageBox.setFixedSize(500,200);    }
 }

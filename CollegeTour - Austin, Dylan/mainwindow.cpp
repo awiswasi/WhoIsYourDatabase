@@ -86,6 +86,7 @@ void MainWindow::displaySouvenirs(int index)   //, College college)             
         ui->tableWidget->setItem(i,1, new QTableWidgetItem(""));
         ui->tableWidget->setItem(i,0, new QTableWidgetItem(""));
     }
+//    qDebug() << skipped << '\n';
 }
 
 void MainWindow::getCollegeIndex(int index)
@@ -159,6 +160,7 @@ void MainWindow::on_addButton_clicked()
 
 void MainWindow::on_saveButton_clicked()
 {
+    for(int r = 0; r < 2; r++){
     //im sure theres a better way for this but this is what i came up with
     vector<string> nameV;
     vector<double> priceV;
@@ -186,12 +188,49 @@ void MainWindow::on_saveButton_clicked()
         {
             dataBase.at(collegeIndex).setSouvenir(nameV[i],priceV[i],i);
             }
-        }
 
+////////////////////////////////////////
+    int skipped = 0;
+    for(int i = 0; i < 7; i++){
+        if(QString::fromStdString(dataBase.at(collegeIndex).getSouvenir(i).souvenir) == "a" || QString::fromStdString(dataBase.at(collegeIndex).getSouvenir(i).souvenir) == "\r" || QString::fromStdString(dataBase.at(collegeIndex).getSouvenir(i).souvenir) == ""){
+            skipped++;
+        }
+        if(i+skipped < 7){
+        ui->tableWidget->setItem(i,1, new QTableWidgetItem(QString::fromStdString(dataBase.at(collegeIndex).getSouvenir(i+skipped).souvenir)));
+        ui->tableWidget->setItem(i,0, new QTableWidgetItem("$" + QString::number(dataBase.at(collegeIndex).getSouvenir(i+skipped).cost)));
+}
+
+    }
+    for(int i = 7-skipped; i < 8; i ++){
+        ui->tableWidget->setItem(i,1, new QTableWidgetItem(""));
+        ui->tableWidget->setItem(i,0, new QTableWidgetItem(""));
+    }
+///////////////////////////////////////
+
+
+    for (int i = 0; i < ui->tableWidget->rowCount(); i++)
+    {
+
+        nameQ = ui->tableWidget->item(i,1)->text();
+        priceStr = ui->tableWidget->item(i,0)->text();
+
+        name = nameQ.toLocal8Bit().constData();
+        price = priceStr.remove(0,1).toDouble();
+
+        nameV.push_back(name);
+        priceV.push_back(price);
+    }
+
+    for (int i = 0; i < ui->tableWidget->rowCount(); i++)
+    {
+        dataBase.at(collegeIndex).setSouvenir(nameV[i],priceV[i],i);
+        }
+    }
 
     //name.chop(1);
 
     //qDebug() << collegeIndex << ' ' << name << ' ' << price <<'\n';
+    }
 }
 
 void MainWindow::on_actionSave_triggered()
