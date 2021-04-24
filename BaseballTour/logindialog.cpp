@@ -9,6 +9,9 @@ loginDialog::loginDialog(QWidget *parent) :
     ui(new Ui::loginDialog)
 {
     ui->setupUi(this);
+
+    //QSqlDatabase mydb = QSqlDatabase::addDatabase("QSQLITE");
+    //mydb.setDatabaseName("C:/Users/awfwi/OneDrive/Desktop/CS1D");
     //QTimer::singleShot(0, loginButton, SLOT(setFocus))
 }
 
