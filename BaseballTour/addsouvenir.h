@@ -17,6 +17,10 @@ class addsouvenir : public QDialog
 public:
     explicit addsouvenir(QWidget *parent = nullptr);
     ~addsouvenir();
+    QSqlDatabase souvenirsDB;
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::addsouvenir *ui;

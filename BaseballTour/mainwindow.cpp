@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->statusBar()->setSizeGripEnabled(false);
 
     QSqlDatabase souvenirsDB = QSqlDatabase::addDatabase("QSQLITE");
-        souvenirsDB.setDatabaseName("C:/Users/awfwi/OneDrive/Desktop/CS1D/souvenirs.db");
+        souvenirsDB.setDatabaseName("../souvenirs.db");
 
         souvenirsDB.open();
 
