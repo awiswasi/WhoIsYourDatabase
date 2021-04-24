@@ -2,11 +2,44 @@
 #include "ui_mainwindow.h"
 #include "logindialog.h"
 
+
+#include <QString>
+#include <QTableWidget>
+#include <QFileDialog>
+#include <iostream>
+
+#include <QDebug>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->statusBar()->setSizeGripEnabled(false);
+
+    // Set table properties (resize to contents, fill the widget with last section, prevent editing)
+//    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+//    ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
+//    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+//    ui->tableWidget->clear();
+//    ui->tableWidget->insertRow ( ui->tableWidget->rowCount() );
+//    ui->tableWidget->insertRow ( ui->tableWidget->rowCount() );
+
+
+//    createCList();
+
+//    ui->actionAdd_from_file->setEnabled(false);
+    ui->actionLog_Out->setEnabled(false);
+
+    ui->addButton->setVisible(false);
+    ui->saveButton->setVisible(false);
+
+//    connect(ui->homeBox,SIGNAL(activated(int)), this, SLOT(showColleges(int)));
+////    connect(ui->homeBox,SIGNAL(activated(int)), this, SLOT(displaySouvenirs(int)));
+//    connect(ui->campusTable,SIGNAL(currentRowChanged(int)), this, SLOT(displaySouvenirs(int)));
+//    connect(ui->campusTable,SIGNAL(currentRowChanged(int)), this, SLOT(getCollegeIndex(int)));
+
+    //isAdmin = false;
 }
 
 MainWindow::~MainWindow()
@@ -16,31 +49,34 @@ MainWindow::~MainWindow()
 
 
 
-//void MainWindow::on_actionLogin_triggered()
-//{
-//    loginDialog *loginWindow = new loginDialog;
-//    loginWindow->exec();
-//    isAdmin = loginWindow->getLoggedIn();
+void MainWindow::on_actionLogin_triggered()
+{
+    loginDialog *loginWindow = new loginDialog;
+    loginWindow->exec();
+    isAdmin = loginWindow->getLoggedIn();
 
-//    if (isAdmin)
-//    {
+    if (isAdmin)
+    {
 //        ui->actionAdd_from_file->setEnabled(true);
-//        ui->actionLog_Out->setEnabled(true);
-//        ui->addButton->setVisible(true);
+        ui->actionLog_Out->setEnabled(true);
+        ui->addButton->setVisible(true);
+        ui->actionLogin->setEnabled(false);
+
 //        ui->tableWidget->setEditTriggers(QAbstractItemView::DoubleClicked);
-//        ui->saveButton->setVisible(true);
-//    }
-//    delete loginWindow;
-//}
-//void MainWindow::on_actionLog_Out_triggered()
-//{
-//    isAdmin = false;
+        ui->saveButton->setVisible(true);
+    }
+    delete loginWindow;
+}
+void MainWindow::on_actionLog_Out_triggered()
+{
+    isAdmin = false;
 //    ui->actionAdd_from_file->setEnabled(false);
-//    ui->actionLog_Out->setEnabled(false);
-//    ui->addButton->setVisible(false);
+    ui->actionLog_Out->setEnabled(false);
+    ui->actionLogin->setEnabled(true);
+    ui->addButton->setVisible(false);
 //    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-//    ui->saveButton->setVisible(false);
-//}
+    ui->saveButton->setVisible(false);
+}
 
 
 
