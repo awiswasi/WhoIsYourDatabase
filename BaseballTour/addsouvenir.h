@@ -1,7 +1,6 @@
 #ifndef ADDSOUVENIR_H
 #define ADDSOUVENIR_H
 
-#include <QWidget>
 #include <QDialog>
 #include <QtSql>
 #include <QDebug>
@@ -11,7 +10,7 @@ namespace Ui {
 class addsouvenir;
 }
 
-class addsouvenir : public QWidget
+class addsouvenir : public QDialog
 {
     Q_OBJECT
 

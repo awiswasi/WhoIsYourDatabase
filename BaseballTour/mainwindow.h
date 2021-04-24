@@ -5,6 +5,7 @@
 #include <QDialog>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include "addsouvenir.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,6 +20,7 @@ public:
     ~MainWindow();
     void createCList();
     QSqlDatabase souvenirsDB;
+    addsouvenir *addSouvenirs;
 
 private slots:
 //    void displaySouvenirs(int index);
@@ -42,6 +44,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
     bool isAdmin;
 };
 

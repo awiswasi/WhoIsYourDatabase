@@ -111,7 +111,8 @@ void MainWindow::on_push_souvenirs_clicked()
 void MainWindow::on_addSouvenirButton_clicked()
 {
     // open a new dialog window to add a souvenir
-    addsouvenir *addSouvenirs = new addsouvenir;
-    addSouvenirs->exec();
+
+    addSouvenirs = new addsouvenir(this);
+    addSouvenirs->show();
 
 }
