@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "logindialog.h"
+#include "addsouvenir.h"
 #include <QDialog>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
@@ -39,6 +40,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->addButton->setVisible(false);
     ui->saveButton->setVisible(false);
+    ui->editButton->setVisible(false);
+    ui->addSouvenirButton->setVisible(false);
 
 //    connect(ui->homeBox,SIGNAL(activated(int)), this, SLOT(showColleges(int)));
 ////    connect(ui->homeBox,SIGNAL(activated(int)), this, SLOT(displaySouvenirs(int)));
@@ -66,6 +69,8 @@ void MainWindow::on_actionLogin_triggered()
 //        ui->actionAdd_from_file->setEnabled(true);
         ui->actionLog_Out->setEnabled(true);
         ui->addButton->setVisible(true);
+        ui->editButton->setVisible(true);
+        ui->addSouvenirButton->setVisible(true);
         ui->actionLogin->setEnabled(false);
 
 //        ui->tableWidget->setEditTriggers(QAbstractItemView::DoubleClicked);
@@ -82,10 +87,9 @@ void MainWindow::on_actionLog_Out_triggered()
     ui->addButton->setVisible(false);
 //    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->saveButton->setVisible(false);
+    ui->editButton->setVisible(false);
+    ui->addSouvenirButton->setVisible(false);
 }
-
-
-
 
 
 void MainWindow::on_push_souvenirs_clicked()
@@ -102,4 +106,12 @@ void MainWindow::on_push_souvenirs_clicked()
 
         model->setQuery(*qry);
         ui->tableView->setModel(model);
+}
+
+void MainWindow::on_addSouvenirButton_clicked()
+{
+    // open a new dialog window to add a souvenir
+    addsouvenir *addSouvenirs = new addsouvenir;
+    addSouvenirs->exec();
+
 }

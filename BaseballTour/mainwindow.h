@@ -38,6 +38,8 @@ private slots:
 
     void on_push_souvenirs_clicked();
 
+    void on_addSouvenirButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     bool isAdmin;
