@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "logindialog.h"
-
-
+#include <QDialog>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
 #include <QString>
 #include <QTableWidget>
 #include <QFileDialog>
@@ -16,6 +17,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->statusBar()->setSizeGripEnabled(false);
+
+    QSqlDatabase souvenirsDB = QSqlDatabase::addDatabase("QSQLITE");
+        souvenirsDB.setDatabaseName("C:/Users/awfwi/OneDrive/Desktop/CS1D/souvenirs.db");
+
+        souvenirsDB.open();
 
     // Set table properties (resize to contents, fill the widget with last section, prevent editing)
 //    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
@@ -81,3 +87,19 @@ void MainWindow::on_actionLog_Out_triggered()
 
 
 
+
+void MainWindow::on_push_souvenirs_clicked()
+{
+    souvenirsDB.open();
+
+        MainWindow souvenirObj;
+        QSqlQueryModel * model=new QSqlQueryModel();
+
+        QSqlQuery * qry=new QSqlQuery(souvenirObj.souvenirsDB);
+        qry->prepare("select souvenir, price from souvenirs");
+
+        qry->exec();
+
+        model->setQuery(*qry);
+        ui->tableView->setModel(model);
+}

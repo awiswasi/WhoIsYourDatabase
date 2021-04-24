@@ -24,7 +24,7 @@
       <x>210</x>
       <y>10</y>
       <width>891</width>
-      <height>551</height>
+      <height>201</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -381,6 +381,16 @@
     </property>
     <property name="text">
      <string>Add</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>240</y>
+      <width>401</width>
+      <height>301</height>
+     </rect>
     </property>
    </widget>
   </widget>
