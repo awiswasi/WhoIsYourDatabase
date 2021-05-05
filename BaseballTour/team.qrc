@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>resources/logo.png</file>
         <file>resources/icon.png</file>
-        <file>../../../../../Downloads/maybe.png</file>
         <file>../../../../../Downloads/orthis.png</file>
     </qresource>
 </RCC>
