@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1115</width>
+    <width>1203</width>
     <height>606</height>
    </rect>
   </property>
@@ -17,126 +17,11 @@
    <iconset resource="team.qrc">
     <normaloff>:/resources/icon.png</normaloff>:/resources/icon.png</iconset>
   </property>
+  <property name="toolTip">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableWidget" name="table_main">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>10</y>
-      <width>891</width>
-      <height>551</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>891</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="editTriggers">
-     <set>QAbstractItemView::NoEditTriggers</set>
-    </property>
-    <property name="showGrid">
-     <bool>true</bool>
-    </property>
-    <property name="sortingEnabled">
-     <bool>true</bool>
-    </property>
-    <attribute name="verticalHeaderVisible">
-     <bool>false</bool>
-    </attribute>
-    <row>
-     <property name="text">
-      <string>New Row</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>New Row</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>New Row</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>New Row</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>New Row</string>
-     </property>
-    </row>
-    <column>
-     <property name="text">
-      <string>Team</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Stadium Name</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Seating Capacity</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Location</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Playing Surface</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>League</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Distance to Center</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Roof Type</string>
-     </property>
-    </column>
-    <item row="0" column="0">
-     <property name="text">
-      <string>Jackals</string>
-     </property>
-    </item>
-    <item row="1" column="0">
-     <property name="text">
-      <string>4</string>
-     </property>
-    </item>
-    <item row="2" column="0">
-     <property name="text">
-      <string>5</string>
-     </property>
-    </item>
-    <item row="3" column="0">
-     <property name="text">
-      <string>6</string>
-     </property>
-    </item>
-    <item row="4" column="0">
-     <property name="text">
-      <string>7</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QComboBox" name="combo_filter">
+   <widget class="QComboBox" name="combo_sort">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -147,32 +32,12 @@
     </property>
     <item>
      <property name="text">
-      <string>All Teams</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>American League</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>National League</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QComboBox" name="combo_sort">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>300</y>
-      <width>191</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
       <string>Team</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Stadium Age</string>
      </property>
     </item>
     <item>
@@ -215,7 +80,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>280</y>
+      <y>220</y>
       <width>51</width>
       <height>20</height>
      </rect>
@@ -229,24 +94,6 @@
      <string>Sort By</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_filter">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>220</y>
-      <width>51</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Filter</string>
-    </property>
-   </widget>
    <widget class="QComboBox" name="combo_team">
     <property name="geometry">
      <rect>
@@ -258,22 +105,7 @@
     </property>
     <item>
      <property name="text">
-      <string>Select Team...</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>New Item</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>New Item</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>New Item</string>
+      <string>Select Team</string>
      </property>
     </item>
    </widget>
@@ -347,14 +179,128 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
+   <widget class="QLabel" name="label_dbstatus">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>440</y>
+      <width>191</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>status :)</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>10</y>
+      <width>871</width>
+      <height>551</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="reload_button">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>570</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reload Table</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Ami_League_Button">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>280</y>
+      <width>131</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>American League</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Nat_Leagu_Button">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>310</y>
+      <width>131</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>National League</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Open_Roof_Button">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>340</y>
+      <width>131</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Open Roof Type</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>570</y>
+      <width>141</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Open Roof Type Total: </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>570</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>560</y>
+      <width>321</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sort by stadium age (oldest to youngest) </string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1115</width>
-     <height>20</height>
+     <width>1203</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
