@@ -45,6 +45,26 @@ class MainWindow : public QMainWindow
 {
         Q_OBJECT
     private slots:
+    //    void displaySouvenirs(int index);
+    //    void editSouvenirs(int index);
+
+        void on_actionLogin_triggered();
+
+        void on_actionLog_Out_triggered();
+
+        //void onactionAdd_from_file_triggered();
+
+        //    void on_addButton_clicked();
+
+        //    void on_saveButton_clicked();
+
+     //    void on_actionSave_triggered();
+
+        void on_push_souvenirs_clicked();
+
+        void on_addSouvenirButton_clicked();
+
+
         void on_combo_sort_activated(const QString &arg1);
         void on_combo_team_activated(const QString &arg1);
 
@@ -132,24 +152,7 @@ class MainWindow : public QMainWindow
                 return stadiums;
             }
 
-            //    void displaySouvenirs(int index);
-//    void editSouvenirs(int index);
 
-    void on_actionLogin_triggered();
-
-    void on_actionLog_Out_triggered();
-
-    //void onactionAdd_from_file_triggered();
-
-//    void on_addButton_clicked();
-
-//    void on_saveButton_clicked();
-
-//    void on_actionSave_triggered();
-
-    void on_push_souvenirs_clicked();
-
-    void on_addSouvenirButton_clicked();
 
             QVector<CurrLocal> InsertionSort2(QVector<int> distances)
             {

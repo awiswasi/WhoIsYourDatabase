@@ -499,7 +499,7 @@ void MainWindow::on_pushButton_clicked()
     modal->setQuery(*qry);
     ui->tableView->setModel(modal);
     conn.connClose();
-
+}
 
 void MainWindow::on_actionLogin_triggered()
 {
