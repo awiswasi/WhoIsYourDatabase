@@ -265,8 +265,6 @@ class MainWindow : public QMainWindow
                 return temp;
             }
 
-            //void on_pushButton_2_clicked();
-
 private:
         QString team;
         QString stad;
