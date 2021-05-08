@@ -101,6 +101,7 @@ void MainWindow::on_combo_sort_activated(const QString &arg1)
      modal->setQuery(*qry);
      ui->tableView->setModel(modal);
      conn.connClose();
+     //ignore this
 }
 void MainWindow::on_combo_team_activated(const QString &arg1)
 {
