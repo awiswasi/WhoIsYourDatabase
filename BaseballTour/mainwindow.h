@@ -7,21 +7,19 @@
 #include <QFileInfo>
 #include <QSortFilterProxyModel>
 #include <QString>
-
-
-
-#include <QMainWindow>
 #include <QApplication>
 #include <QtSql>
 #include <QMap>
 #include <QMessageBox>
-#include <QtDebug>
 #include "dbmanager.h"
 #include "stadiumstructs.h"
 #include "graph.h"
 #include "graphmst.h"
-#include <QFileInfo>
 #include <QTableWidget>
+#include <QDialog>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
+#include "addsouvenir.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -133,6 +131,25 @@ class MainWindow : public QMainWindow
 
                 return stadiums;
             }
+
+            //    void displaySouvenirs(int index);
+//    void editSouvenirs(int index);
+
+    void on_actionLogin_triggered();
+
+    void on_actionLog_Out_triggered();
+
+    //void onactionAdd_from_file_triggered();
+
+//    void on_addButton_clicked();
+
+//    void on_saveButton_clicked();
+
+//    void on_actionSave_triggered();
+
+    void on_push_souvenirs_clicked();
+
+    void on_addSouvenirButton_clicked();
 
             QVector<CurrLocal> InsertionSort2(QVector<int> distances)
             {
@@ -266,6 +283,7 @@ class MainWindow : public QMainWindow
             }
 
 private:
+        bool isAdmin;
         QString team;
         QString stad;
         QString seat;
@@ -317,7 +335,10 @@ private:
         QString getDate();
         QString getDist();
         QString getSurf();
-
+        void createCList();
+        QSqlDatabase souvenirsDB;
+        addsouvenir *addSouvenirs;
 
 };
+
 #endif // MAINWINDOW_H

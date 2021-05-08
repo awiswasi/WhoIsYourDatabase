@@ -14,6 +14,8 @@ SOURCES += \
     distancesdb.cpp \
     graph.cpp \
     graphmst.cpp \
+    addsouvenir.cpp \
+    logindialog.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -23,12 +25,16 @@ HEADERS += \
     distancesdb.h \
     graph.h \
     graphmst.h \
-    mainwindow.h \
-    stadiumstructs.h
+    stadiumstructs.h \
+    addsouvenir.h \
+    logindialog.h \
+    mainwindow.h
 
 FORMS += \
-    graph.ui \
-    mainwindow.ui
+    addsouvenir.ui \
+    logindialog.ui \
+    mainwindow.ui \
+    graph.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

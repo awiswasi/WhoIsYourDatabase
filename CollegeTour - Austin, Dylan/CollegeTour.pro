@@ -21,6 +21,7 @@ HEADERS += \
     dataBase.h \
     customtrip.h \
     logindialog.h \
+    logindialog_copy.h \
     mainwindow.h \
     tripplan.h \
     triptake.h
