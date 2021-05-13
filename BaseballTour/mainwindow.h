@@ -60,7 +60,7 @@ class MainWindow : public QMainWindow
 
         void on_Open_Roof_Button_clicked();
 
-        void on_pushButton_clicked();
+//        void on_pushButton_clicked();
         bool Find(QString stadium)
             {
                 int i = 0;
@@ -264,6 +264,10 @@ class MainWindow : public QMainWindow
                 qDebug() << shortest;
                 return temp;
             }
+
+            void on_greatest_dist_button_clicked();
+
+            void on_total_Cap_Button_clicked();
 
 private:
         QString team;

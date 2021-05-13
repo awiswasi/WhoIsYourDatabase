@@ -11,7 +11,7 @@
 dbManager::dbManager()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("Project2database.db");
+    db.setDatabaseName("MLBinfo.db");
 //    db.open();
     if(!db.open())
         qDebug() << "Not connected to DB.";
@@ -37,9 +37,9 @@ QVector<StadiumInfo> dbManager:: getStadiumInfo()
         {
             myStructInfo.stadiumName = query.value(0).toString();
             myStructInfo.teamName = query.value(1).toString();
-            myStructInfo.address = query.value(2).toString();
+            myStructInfo.distanceToCenter = query.value(2).toInt();
             myStructInfo.capacity = query.value(3).toInt();
-            myStructInfo.phoneNumber = query.value(4).toString();
+            myStructInfo.roofType = query.value(4).toString();
             myStructInfo.surface = query.value(5).toString();
             dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
             myStructInfo.dateOpen = dateTime1;
@@ -75,9 +75,9 @@ QVector<StadiumInfo> dbManager:: sortedByCapacity()
         {
             myStructInfo.stadiumName = query.value(0).toString();
             myStructInfo.teamName = query.value(1).toString();
-            myStructInfo.address = query.value(2).toString();
+            myStructInfo.distanceToCenter = query.value(2).toInt();
             myStructInfo.capacity = query.value(3).toInt();
-            myStructInfo.phoneNumber = query.value(4).toString();
+            myStructInfo.roofType = query.value(4).toString();
             myStructInfo.surface = query.value(5).toString();
             dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
             myStructInfo.dateOpen = dateTime1;
@@ -158,9 +158,9 @@ QVector<StadiumInfo> dbManager:: sortedByTeamStadium(QString name)
             {
                 myStructInfo.stadiumName = query.value(0).toString();
                 myStructInfo.teamName = query.value(1).toString();
-                myStructInfo.address = query.value(2).toString();
+                myStructInfo.distanceToCenter = query.value(2).toInt();
                 myStructInfo.capacity = query.value(3).toInt();
-                myStructInfo.phoneNumber = query.value(4).toString();
+                myStructInfo.roofType = query.value(4).toString();
                 myStructInfo.surface = query.value(5).toString();
                 dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
                 myStructInfo.dateOpen = dateTime1;
@@ -196,9 +196,9 @@ QVector<StadiumInfo> dbManager:: sortedStadiumTypology()
         {
             myStructInfo.stadiumName = query.value(0).toString();
             myStructInfo.teamName = query.value(1).toString();
-            myStructInfo.address = query.value(2).toString();
+            myStructInfo.distanceToCenter = query.value(2).toInt();
             myStructInfo.capacity = query.value(3).toInt();
-            myStructInfo.phoneNumber = query.value(4).toString();
+            myStructInfo.roofType = query.value(4).toString();
             myStructInfo.surface = query.value(5).toString();
             dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
             myStructInfo.dateOpen = dateTime1;
@@ -236,9 +236,9 @@ QVector<StadiumInfo> dbManager:: surfaceSorted()
         {
             myStructInfo.stadiumName = query.value(0).toString();
             myStructInfo.teamName = query.value(1).toString();
-            myStructInfo.address = query.value(2).toString();
+            myStructInfo.distanceToCenter = query.value(2).toInt();
             myStructInfo.capacity = query.value(3).toInt();
-            myStructInfo.phoneNumber = query.value(4).toString();
+            myStructInfo.roofType = query.value(4).toString();
             myStructInfo.surface = query.value(5).toString();
             dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
             myStructInfo.dateOpen = dateTime1;
@@ -274,9 +274,9 @@ QVector<StadiumInfo> dbManager:: sortedChronologicalOrder()
         {
             myStructInfo.stadiumName = query.value(0).toString();
             myStructInfo.teamName = query.value(1).toString();
-            myStructInfo.address = query.value(2).toString();
+            myStructInfo.distanceToCenter = query.value(2).toInt();
             myStructInfo.capacity = query.value(3).toInt();
-            myStructInfo.phoneNumber = query.value(4).toString();
+            myStructInfo.roofType = query.value(4).toString();
             myStructInfo.surface = query.value(5).toString();
             dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
             myStructInfo.dateOpen = dateTime1;
@@ -585,11 +585,11 @@ bool dbManager::addTeam(StadiumInfo myStadiumInfo, QVector<DistanceInfo>tempDist
 
     //Insert the stadium information
 
-    query.prepare("Insert into mlb(Stadium, Team, Address, Capacity, [Phone Number], Surface, [Date Opened], [League Type], Typology) values ('"
+    query.prepare("Insert into mlb(Stadium, Team, Distance to Center, Capacity, Roof Type, Surface, [Date Opened], [League Type], Typology) values ('"
 
-                   +myStadiumInfo.stadiumName+ "', '" +myStadiumInfo.teamName+ "', '" +myStadiumInfo.address+ "', '" +QString::number(myStadiumInfo.capacity)+ "', '"
+                   +myStadiumInfo.stadiumName+ "', '" +myStadiumInfo.teamName+ "', '" +myStadiumInfo.distanceToCenter+ "', '" +QString::number(myStadiumInfo.capacity)+ "', '"
 
-                   +myStadiumInfo.phoneNumber+ "', '" +myStadiumInfo.surface+ "', '" +myStadiumInfo.dateOpen.toString(format)+ "', '" +myStadiumInfo.leagueType+ "', '"
+                   +myStadiumInfo.roofType+ "', '" +myStadiumInfo.surface+ "', '" +myStadiumInfo.dateOpen.toString(format)+ "', '" +myStadiumInfo.leagueType+ "', '"
 
                    +myStadiumInfo.typology+ "')");
 
@@ -768,9 +768,9 @@ QVector<StadiumInfo> dbManager::getInfo(QString teamName)
        {
            myStructInfo.stadiumName = query.value(0).toString();
            myStructInfo.teamName = query.value(1).toString();
-           myStructInfo.address = query.value(2).toString();
+           myStructInfo.distanceToCenter = query.value(2).toInt();
            myStructInfo.capacity = query.value(3).toInt();
-           myStructInfo.phoneNumber = query.value(4).toString();
+           myStructInfo.roofType = query.value(4).toString();
            myStructInfo.surface = query.value(5).toString();
            dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
            myStructInfo.dateOpen = dateTime1;

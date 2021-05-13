@@ -1,6 +1,6 @@
 ﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "ballparkdb.h"
+//#include "ballparkdb.h"
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QtDebug>
@@ -19,29 +19,102 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    BallparkDB conn;
+    ui->tableView->horizontalHeader()->setVisible(true);
+    ui->tableView->verticalHeader()->setVisible(false);
+    //changes
+    QString format = "MMMM d, yyyy";
 
-    if(!conn.connOpen())
-    {
-        ui->label_dbstatus->setText("Put DB's in build/databases/ folder");
-        qDebug() << "Put databases in " << QString(QCoreApplication::applicationDirPath()) << " / databases/";
-    }
-    else
-        ui->label_dbstatus->setText("Database connected");
-    QSqlQueryModel * modal = new QSqlQueryModel();
+        QTableWidgetItem *itemTeam;
+        QTableWidgetItem *itemStadium;
+        QTableWidgetItem *itemCapacity;
+        QTableWidgetItem *itemTypology;
+        QTableWidgetItem *itemSurface;
+        QTableWidgetItem *itemDistance;
+        QTableWidgetItem *itemRoof;
+        QTableWidgetItem *itemDate;
+
+
+        QVector<StadiumInfo> stadiumVect;
+        QString league;
+
+        int index, currentRow;
+        index = 0;
+        currentRow = 0;
+        while(ui->tableView->rowCount()!=0)
+        {
+            ui->tableView->removeRow(0);   //when you get to each new item add the row
+        }
+        for(index = 0; index < stadiumVect.size(); index++)
+        {
+            //ui->tableView->insertRow(currentRow);
+            itemTeam = new QTableWidgetItem;
+            itemTeam->setText(stadiumVect[index].teamName);
+            ui->tableView->setItem(currentRow, 0, itemTeam);
+
+            itemStadium = new QTableWidgetItem;
+            itemStadium->setText(stadiumVect[index].stadiumName);
+            ui->tableView->setItem(currentRow, 1, itemStadium);
+
+            itemCapacity = new QTableWidgetItem;
+            itemCapacity->setText(QString::number(stadiumVect[index].capacity));
+            ui->tableView->setItem(currentRow, 2, itemCapacity);
+
+            itemTypology = new QTableWidgetItem;
+            itemTypology->setText(stadiumVect[index].typology);
+            ui->tableView->setItem(currentRow, 3, itemTypology);
+
+            itemSurface = new QTableWidgetItem;
+            itemSurface->setText(stadiumVect[index].surface);
+            ui->tableView->setItem(currentRow, 4, itemSurface);
+
+            itemDistance = new QTableWidgetItem;
+            itemDistance->setText(QString::number(stadiumVect[index].distanceToCenter));
+            ui->tableView->setItem(currentRow, 5, itemDistance);
+
+            itemRoof = new QTableWidgetItem;
+            itemRoof->setText(stadiumVect[index].roofType);
+            ui->tableView->setItem(currentRow, 6, itemRoof);
+
+            itemDate = new QTableWidgetItem;
+            itemDate->setText(stadiumVect[index].dateOpen.toString(format));
+            ui->tableView->setItem(currentRow, 7, itemDate);
+
+            currentRow++;
+        }
+        ui->tableView->setRowCount(currentRow);
+        ui->tableView->resizeColumnsToContents();
+
+        ui->tableView->selectRow(0);
+
+
+  //  BallparkDB conn;
+
+//    if(!conn.connOpen())
+//    {
+//        ui->label_dbstatus->setText("Put DB's in build/databases/ folder");
+//        qDebug() << "Put databases in " << QString(QCoreApplication::applicationDirPath()) << " / databases/";
+//    }
+//    else
+//        ui->label_dbstatus->setText("Database connected");
+//    QSqlQueryModel * modal = new QSqlQueryModel();
 
    // conn.connOpen();
-    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+//    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+    ui->tableView->resizeColumnsToContents();
+    ui->tableView->resizeRowsToContents();
+    //vector to store teamNames
+    QVector<QString> teamList = thisDatabase.getTeamNames();
 
-    qry->prepare("select * from MLBinfo");
-    qry->exec();
+    //populating table
+//    qry->prepare("select * from MLBinfo");
+//    qry->exec();
 
-    modal->setQuery(*qry);
+//    modal->setQuery(*qry);
 
-    ui->tableView->setModel(modal);
-    ui->combo_team->setModel(modal);
+//    ui->tableView->setModel(modal);
+//    ui->combo_team->setModel(modal);
 
-    conn.connClose();
+//    conn.connClose();
 
 }
 
@@ -55,212 +128,212 @@ MainWindow::~MainWindow()
 void MainWindow::on_combo_sort_activated(const QString &arg1)
 {
 
-    BallparkDB conn;
-    QSqlQueryModel * modal = new QSqlQueryModel();
-    conn.connOpen();
-    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+//    BallparkDB conn;
+//    QSqlQueryModel * modal = new QSqlQueryModel();
+//    conn.connOpen();
+ //   QSqlQuery * qry = new QSqlQuery(conn.mydb);
 
     // QMessageBox::information(this, "Title", ui->combo_sort->currentText());
-     if(ui->combo_sort->currentText() == "Team")
-     {
-             qry->prepare("select * from MLBinfo order by teamName");
-     }
-     else if (ui->combo_sort->currentText() == "Stadium")
-     {
-             qry->prepare("select * from MLBinfo order by stadiumName");
-     }
-     else if (ui->combo_sort->currentText() == "Stadium Age")
-     {
-              qry->prepare("select * from MLBinfo order by dateOpened");
-     }
-     else if (ui->combo_sort->currentText() == "Capacity")
-     {
-             qry->prepare("select * from MLBinfo order by seatingCapacity");
-     }
-     else if (ui->combo_sort->currentText() == "Location")
-     {
-           qry->prepare("select * from MLBinfo order by location");
-     }
-     else if (ui->combo_sort->currentText() == "Surface")
-     {
-        qry->prepare("select * from MLBinfo order by playingSurface");
-     }
-     else if (ui->combo_sort->currentText() == "League")
-     {
-        qry->prepare("select * from MLBinfo order by league");
-     }
-     else if (ui->combo_sort->currentText() == "Center Field")
-     {
-         qry->prepare("select * from MLBinfo order by distanceToCenter");
-     }
-     else
-     {
-        qry->prepare("select * from MLBinfo order by roofType");
-     }
-     qry->exec();
-     modal->setQuery(*qry);
-     ui->tableView->setModel(modal);
-     conn.connClose();
+//     if(ui->combo_sort->currentText() == "Team")
+//     {
+//             qry->prepare("select * from MLBinfo order by teamName");
+//     }
+//     else if (ui->combo_sort->currentText() == "Stadium")
+//     {
+//             qry->prepare("select * from MLBinfo order by stadiumName");
+//     }
+//     else if (ui->combo_sort->currentText() == "Stadium Age")
+//     {
+//              qry->prepare("select * from MLBinfo order by dateOpened");
+//     }
+//     else if (ui->combo_sort->currentText() == "Capacity")
+//     {
+//             qry->prepare("select * from MLBinfo order by seatingCapacity");
+//     }
+//     else if (ui->combo_sort->currentText() == "Location")
+//     {
+//           qry->prepare("select * from MLBinfo order by location");
+//     }
+//     else if (ui->combo_sort->currentText() == "Surface")
+//     {
+//        qry->prepare("select * from MLBinfo order by playingSurface");
+//     }
+//     else if (ui->combo_sort->currentText() == "League")
+//     {
+//        qry->prepare("select * from MLBinfo order by league");
+//     }
+//     else if (ui->combo_sort->currentText() == "Center Field")
+//     {
+//         qry->prepare("select * from MLBinfo order by distanceToCenter");
+//     }
+//     else
+//     {
+//        qry->prepare("select * from MLBinfo order by roofType");
+//     }
+//     qry->exec();
+//     modal->setQuery(*qry);
+//     ui->tableView->setModel(modal);
+//     conn.connClose();
 }
 void MainWindow::on_combo_team_activated(const QString &arg1)
 {
-    BallparkDB conn;
-    QSqlQueryModel * modal = new QSqlQueryModel();
-    conn.connOpen();
-    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+//    BallparkDB conn;
+//    QSqlQueryModel * modal = new QSqlQueryModel();
+//    conn.connOpen();
+//    QSqlQuery * qry = new QSqlQuery(conn.mydb);
 
-    if(ui->combo_team->currentText() == "Arizona Diamondbacks")
-   {
+//    if(ui->combo_team->currentText() == "Arizona Diamondbacks")
+//   {
 
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Arizona Diamondbacks'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Boston Red Sox")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Boston Red Sox'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Baltimore Orioles")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Baltimore Orioles'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Atlanta Braves")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Atlanta Braves'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Chicago White Sox")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Chicago White Sox'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Chicago Cubs")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Chicago Cubs'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Cincinnati Reds")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Cincinnati Reds'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Milwaukee Brewers")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Milwaukee Brewers'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Miami Marlins")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Miami Marlins'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Los Angeles Dodgers")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Los Angeles Dodgers'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Los Angeles Angels")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Los Angeles Angels'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Kansas City Royals")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Kansas City Royals'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Houston Astros")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Houston Astros'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Detroit Tigers")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Detroit Tigers'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Colorado Rockies")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Colorado Rockies'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Cleveland Indians")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Cleveland Indians'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Washington Nationals")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Washington Nationals'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Toronto Blue Jays")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Toronto Blue Jays'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Texas Rangers")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Texas Rangers'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "St.Louis Cardinals")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'St.Louis Cardinal'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Seattle Mariners")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Seattle Mariners'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "San Francisco Giants")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'San Francisco Giants'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "San Diego Padres")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'San Diego Padres'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Pittsburgh Pirates")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Pittsburgh Pirates'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Philadelphia Phillies")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Philadelphia Phillies'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "Oakland Athletics")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Oakland Athletics'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "New York Yankees")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'New York Yankees'");;
-        qry->exec();
-    }
-    else if(ui->combo_team->currentText() == "New York Mets")
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'New York Mets'");;
-        qry->exec();
-    }
-    else
-    {
-        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Minnesota Twins'");;
-        qry->exec();
-    }
-    modal->setQuery(*qry);
-    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
-    m->setSourceModel(modal);
-    ui->tableView->setModel(m);
-    ui->tableView->setSortingEnabled(true);
-    conn.connClose();
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Arizona Diamondbacks'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Boston Red Sox")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Boston Red Sox'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Baltimore Orioles")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Baltimore Orioles'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Atlanta Braves")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Atlanta Braves'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Chicago White Sox")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Chicago White Sox'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Chicago Cubs")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Chicago Cubs'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Cincinnati Reds")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Cincinnati Reds'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Milwaukee Brewers")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Milwaukee Brewers'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Miami Marlins")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Miami Marlins'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Los Angeles Dodgers")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Los Angeles Dodgers'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Los Angeles Angels")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Los Angeles Angels'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Kansas City Royals")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Kansas City Royals'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Houston Astros")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Houston Astros'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Detroit Tigers")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Detroit Tigers'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Colorado Rockies")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Colorado Rockies'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Cleveland Indians")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Cleveland Indians'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Washington Nationals")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Washington Nationals'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Toronto Blue Jays")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Toronto Blue Jays'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Texas Rangers")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Texas Rangers'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "St.Louis Cardinals")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'St.Louis Cardinal'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Seattle Mariners")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Seattle Mariners'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "San Francisco Giants")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'San Francisco Giants'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "San Diego Padres")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'San Diego Padres'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Pittsburgh Pirates")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Pittsburgh Pirates'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Philadelphia Phillies")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Philadelphia Phillies'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "Oakland Athletics")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Oakland Athletics'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "New York Yankees")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'New York Yankees'");;
+//        qry->exec();
+//    }
+//    else if(ui->combo_team->currentText() == "New York Mets")
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'New York Mets'");;
+//        qry->exec();
+//    }
+//    else
+//    {
+//        qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Minnesota Twins'");;
+//        qry->exec();
+//    }
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
+//    ui->tableView->setSortingEnabled(true);
+//    conn.connClose();
 
 }
 /******************************
@@ -335,128 +408,192 @@ void MainWindow::on_tableView_activated(const QModelIndex &index)
 
 void MainWindow::on_reload_button_clicked()
 {
-    ui->setupUi(this);
+//    ui->setupUi(this);
 
-    BallparkDB conn;
+//    BallparkDB conn;
 
-    if(!conn.connOpen())
-    {
-        ui->label_dbstatus->setText("Put DB's in build/databases/ folder");
-        qDebug() << "Put databases in " << QString(QCoreApplication::applicationDirPath()) << " / databases/";
-    }
-    else
-        ui->label_dbstatus->setText("Database connected");
-    QSqlQueryModel * modal = new QSqlQueryModel();
+//    if(!conn.connOpen())
+//    {
+//        ui->label_dbstatus->setText("Put DB's in build/databases/ folder");
+//        qDebug() << "Put databases in " << QString(QCoreApplication::applicationDirPath()) << " / databases/";
+//    }
+//    else
+//        ui->label_dbstatus->setText("Database connected");
+//    QSqlQueryModel * modal = new QSqlQueryModel();
 
-   // conn.connOpen();
-    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+//   // conn.connOpen();
+//    QSqlQuery * qry = new QSqlQuery(conn.mydb);
 
-    qry->prepare("select * from MLBinfo");
-    qry->exec();
+//    qry->prepare("select * from MLBinfo");
+//    qry->exec();
 
-    modal->setQuery(*qry);
+//    modal->setQuery(*qry);
 
-    ui->tableView->setModel(modal);
-    ui->combo_team->setModel(modal);
+//    ui->tableView->setModel(modal);
+//    ui->combo_team->setModel(modal);
 
-    conn.connClose();
+//    conn.connClose();
 }
 
 void MainWindow::on_Ami_League_Button_clicked()
 {
-    BallparkDB conn;
-    QSqlQueryModel * modal = new QSqlQueryModel();
-    conn.connOpen();
-    QSqlQuery * qry = new QSqlQuery(conn.mydb);
-    qry->prepare("select * from MLBinfo where league = 'American'order by stadiumName");;
+//    BallparkDB conn;
+//    QSqlQueryModel * modal = new QSqlQueryModel();
+//    conn.connOpen();
+//    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+//    qry->prepare("select * from MLBinfo where league = 'American'order by stadiumName");;
 
-    qry->exec();
-    modal->setQuery(*qry);
-    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
-    m->setSourceModel(modal);
-    ui->tableView->setModel(m);
-    ui->tableView->setSortingEnabled(true);
+//    qry->exec();
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
+//    ui->tableView->setSortingEnabled(true);
 
-    qry->exec();
-    modal->setQuery(*qry);
-    ui->tableView->setModel(modal);
-    conn.connClose();
+//    qry->exec();
+//    modal->setQuery(*qry);
+//    ui->tableView->setModel(modal);
+//    conn.connClose();
 }
 
 void MainWindow::on_Nat_Leagu_Button_clicked()
 {
-    BallparkDB conn;
-    QSqlQueryModel * modal = new QSqlQueryModel();
-    conn.connOpen();
-    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+//    BallparkDB conn;
+//    QSqlQueryModel * modal = new QSqlQueryModel();
+//    conn.connOpen();
+//    QSqlQuery * qry = new QSqlQuery(conn.mydb);
 
-    qry->prepare("select * from MLBinfo where league = 'National' order by stadiumName");
-  //  qry->prepare("select * from MLBinfo where league = 'National' order by teamName");
-    qry->exec();
-    modal->setQuery(*qry);
-    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
-    m->setSourceModel(modal);
-    ui->tableView->setModel(m);
-    ui->tableView->setSortingEnabled(true);
+//    qry->prepare("select * from MLBinfo where league = 'National' order by stadiumName");
+//  //  qry->prepare("select * from MLBinfo where league = 'National' order by teamName");
+//    qry->exec();
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
+//    ui->tableView->setSortingEnabled(true);
 
-    qry->exec();
-    modal->setQuery(*qry);
-    ui->tableView->setModel(modal);
-    conn.connClose();
+//    qry->exec();
+//    modal->setQuery(*qry);
+//    ui->tableView->setModel(modal);
+//    conn.connClose();
 }
 
 void MainWindow::on_Open_Roof_Button_clicked()
 {
 
-    BallparkDB conn;
+//    BallparkDB conn;
 
-    QSqlQueryModel * modal = new QSqlQueryModel();
-    conn.connOpen();
-    QSqlQuery * qry = new QSqlQuery(conn.mydb);
-    //QStringList data;
-    QString data = " ";
+//    QSqlQueryModel * modal = new QSqlQueryModel();
+//    conn.connOpen();
+//    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+//    //QStringList data;
+//    QString data = " ";
 
-    qry->prepare("select * from MLBinfo where roofType = 'Open'");
-    qry->exec();
-    int i = 0;
-    if(qry->isActive())
-        while(qry->next())
-            i++;
+//    qry->prepare("select * from MLBinfo where roofType = 'Open'");
+//    qry->exec();
+//    int i = 0;
+//    if(qry->isActive())
+//        while(qry->next())
+//            i++;
 
-    data = i;
-     ui->label_2->setText(data);
-    modal->setQuery(*qry);
-    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
-    m->setSourceModel(modal);
-    ui->tableView->setModel(m);
-    ui->tableView->setSortingEnabled(true);
+//    data = i;
 
-    qry->exec();
-    modal->setQuery(*qry);
-    ui->tableView->setModel(modal);
-    conn.connClose();
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
+//    ui->tableView->setSortingEnabled(true);
+
+//    qry->exec();
+//    modal->setQuery(*qry);
+//    ui->tableView->setModel(modal);
+//    conn.connClose();
 }
 
 void MainWindow::on_pushButton_clicked()
 {
-    BallparkDB conn;
+//    BallparkDB conn;
 
-    QSqlQueryModel * modal = new QSqlQueryModel();
-    conn.connOpen();
-    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+//    QSqlQueryModel * modal = new QSqlQueryModel();
+//    conn.connOpen();
+//    QSqlQuery * qry = new QSqlQuery(conn.mydb);
 
 
-    qry->prepare("select * from MLBinfo order by dateOpened");
-    qry->exec();
+//    qry->prepare("select * from MLBinfo order by dateOpened");
+//    qry->exec();
 
-    modal->setQuery(*qry);
-    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
-    m->setSourceModel(modal);
-    ui->tableView->setModel(m);
-    ui->tableView->setSortingEnabled(true);
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
+//    ui->tableView->setSortingEnabled(true);
 
-    qry->exec();
-    modal->setQuery(*qry);
-    ui->tableView->setModel(modal);
-    conn.connClose();
+//    qry->exec();
+//    modal->setQuery(*qry);
+//    ui->tableView->setModel(modal);
+//    conn.connClose();
+}
+
+void MainWindow::on_greatest_dist_button_clicked()
+{
+
+}
+
+void MainWindow::on_total_Cap_Button_clicked()
+{
+//    BallparkDB conn;
+//    QVector<StadiumInfo> stadiumVect;
+
+//    QSqlQueryModel * modal = new QSqlQueryModel();
+//    conn.connOpen();
+//    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+////    //QStringList data;
+////   // stadiumVect = thisDatabase.sortedByCapacity();
+
+////    int total = 0;
+
+////    for(int i = 0; i < stadiumVect.length(); i++)
+////    {
+////        total += stadiumVect[i].capacity;
+////    }
+////    ui->Total_Cap_Label->show();
+////    ui->Total_Cap_Label->setText("Capacity Sum: " + QString(total));
+
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
+//  //  ui->tableView->setSortingEnabled(true);
+
+//    qry->exec();
+//    modal->setQuery(*qry);
+//    ui->tableView->setModel(modal);
+//    conn.connClose();
+
+//    QVector<StadiumInfo> stadiumVect;
+//    BallparkDB conn;
+//    QSqlQueryModel * modal = new QSqlQueryModel();
+//    conn.connOpen();
+//    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+
+//    qry->exec();
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
+//    ui->tableView->setSortingEnabled(true);
+//    qry->prepare("select * from MLBinfo order by dateOpened");
+//    int total = 0;
+//    for(int i = 0; i < stadiumVect.length(); i++)
+//    {
+//        total += stadiumVect[i].capacity;
+//    }
+//    ui->Total_Cap_Label->show();
+//    ui->Total_Cap_Label->setText("Capacity Sum: " + QString(total));
+
+//    qry->exec();
+//    modal->setQuery(*qry);
+//    ui->tableView->setModel(modal);
+//    conn.connClose();
+
 }

@@ -8,12 +8,15 @@ struct StadiumInfo
     QString   teamName;
     QString   stadiumName;
     int       capacity;
-    QString   typology;
+    QString   location;
     QString   surface;
-    QString   address;
-    QString   phoneNumber;
-    QDateTime dateOpen;
     QString   leagueType;
+    QDateTime dateOpen;
+    int       distanceToCenter;
+    QString   typology;
+    QString   roofType;
+
+
 };
 
 

@@ -15,7 +15,8 @@ SOURCES += \
     graph.cpp \
     graphmst.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    test_main.cpp
 
 HEADERS += \
     ballparkdb.h \
@@ -24,11 +25,14 @@ HEADERS += \
     graph.h \
     graphmst.h \
     mainwindow.h \
-    stadiumstructs.h
+    stadiumstructs.h \
+    test_main.h
 
 FORMS += \
     graph.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    plantrip.ui \
+    test_main.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
