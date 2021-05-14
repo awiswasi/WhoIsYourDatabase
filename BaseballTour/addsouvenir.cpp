@@ -21,7 +21,7 @@ addsouvenir::~addsouvenir()
     delete ui;
 }
 
-void addsouvenir::on_pushButton_clicked()
+void addsouvenir::on_addSouvenirButton_clicked()
 {
     addsouvenir obj;
             QString souvenirName, price;
@@ -34,3 +34,6 @@ void addsouvenir::on_pushButton_clicked()
 
             qry->exec();
 }
+
+
+
