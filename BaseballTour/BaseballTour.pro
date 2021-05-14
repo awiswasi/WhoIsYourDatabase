@@ -12,6 +12,7 @@ SOURCES += \
     ballparkdb.cpp \
     dbmanager.cpp \
     distancesdb.cpp \
+    editteam.cpp \
     graph.cpp \
     graphmst.cpp \
     addsouvenir.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     ballparkdb.h \
     dbmanager.h \
     distancesdb.h \
+    editteam.h \
     graph.h \
     graphmst.h \
     stadiumstructs.h \
@@ -36,6 +38,7 @@ HEADERS += \
 
 FORMS += \
     addsouvenir.ui \
+    editteam.ui \
     logindialog.ui \
     mainwindow.ui \
     graph.ui \

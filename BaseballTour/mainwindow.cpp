@@ -623,10 +623,36 @@ void MainWindow::on_editButton_clicked()
 
     qry->prepare("select * from \"" + arg1 + "\"");
     qry->exec();
+/////////
+    QString teamName;
+    QString stadiumName;
+    int     seatingCapacity;
+    QString location;
+    QString playingSurface;
+    QString league;
+    int     dateOpened;
+    int     distanceToCenter;
+    QString ballparkTypology;
+    QString roofType;
 
+    QString consult;
+    consult.append("UPDATE _MLBinfo SET teamName='"+teamName+"', stadiumName='"+stadiumName+"', seatingCapacity='"+seatingCapacity+"', location='"+location+"', playingSurface='"+playingSurface+"', league='"+league+"', dateOpened='"+dateOpened+"', distanceToCenter='"+distanceToCenter+"', ballparkTypology='"+ballparkTypology+"', roofType='"+roofType+"'");
+
+
+    QSqlQuery update;
+    update.prepare(consult);
+
+    if(update.exec()){
+        qDebug()<<"the student is successful update.";
+    }else{
+        qDebug()<<"the student is NOT successful update.";
+        qDebug()<<"ERROR! " << update.lastError();
+    }
+///////////
     modal->setQuery(*qry);
 
     ui->tableView->setModel(modal);
+
 
     conn.connClose();
 
