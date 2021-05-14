@@ -541,34 +541,24 @@ void MainWindow::on_actionLog_Out_triggered()
 
 void MainWindow::on_push_souvenirs_clicked()
 {
-    souvenirsDB.open();
+//    souvenirsDB.open();
 
-        MainWindow souvenirObj;
-        QSqlQueryModel * model=new QSqlQueryModel();
+//        MainWindow souvenirObj;
+//        QSqlQueryModel * model=new QSqlQueryModel();
 
-        QSqlQuery * qry=new QSqlQuery(souvenirObj.souvenirsDB);
-        qry->prepare("select souvenir, price from souvenirs");
+//        QSqlQuery * qry=new QSqlQuery(souvenirObj.souvenirsDB);
+//        qry->prepare("select souvenir, price from souvenirs");
 
-        qry->exec();
+//        qry->exec();
 
-        model->setQuery(*qry);
-        ui->tableView->setModel(model);
-}
+//        model->setQuery(*qry);
+//        ui->tableView->setModel(model);
 
-void MainWindow::on_addSouvenirButton_clicked()
-{
-    // open a new dialog window to add a souvenir
-
-    addSouvenirs = new addsouvenir(this);
-    addSouvenirs->show();
-
-}
-
-void MainWindow::on_editButton_clicked()
-{
     QSqlTableModel *GetTable = new QSqlTableModel(ui->tableView);
 
-    QString arg1 = ui->tableView->model()->index(ui->tableView->selectionModel()->currentIndex().row(),0).data().toString();
+//    QString arg1 = ui->tableView->model()->index(ui->tableView->selectionModel()->currentIndex().row(),0).data().toString();
+
+    QString arg1 = ui->combo_team->currentText();
     qDebug() << arg1;
     QString test = "Hi";
     qDebug() << test;
@@ -586,6 +576,50 @@ void MainWindow::on_editButton_clicked()
         ui->label_dbstatus->setText("Database connected");
     QSqlQueryModel * modal = new QSqlQueryModel();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
+
+    qry->prepare("select * from \"" + arg1 + "\"");
+    qry->exec();
+
+    modal->setQuery(*qry);
+
+    ui->tableView->setModel(modal);
+    conn.connClose();
+}
+
+void MainWindow::on_addSouvenirButton_clicked()
+{
+    // open a new dialog window to add a souvenir
+
+    addSouvenirs = new addsouvenir(this);
+    addSouvenirs->show();
+
+}
+
+void MainWindow::on_editButton_clicked()
+{
+    QSqlTableModel *GetTable = new QSqlTableModel(ui->tableView);
+
+//    QString arg1 = ui->tableView->model()->index(ui->tableView->selectionModel()->currentIndex().row(),0).data().toString();
+
+    QString arg1 = ui->combo_team->currentText();
+    qDebug() << arg1;
+    QString test = "Hi";
+    qDebug() << test;
+    if (arg1 == "")
+        return;
+
+    BallparkDB conn;
+
+    if(!conn.connOpen())
+    {
+        ui->label_dbstatus->setText("Put DB's in build/databases/ folder");
+        qDebug() << "Put databases in " << QString(QCoreApplication::applicationDirPath()) << " / databases/";
+    }
+    else
+        ui->label_dbstatus->setText("Database connected");
+    QSqlQueryModel * modal = new QSqlQueryModel();
+    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+
 
     qry->prepare("select * from \"" + arg1 + "\"");
     qry->exec();
