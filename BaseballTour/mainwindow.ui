@@ -192,7 +192,7 @@
      <string>status :)</string>
     </property>
    </widget>
-   <widget class="QTableView" name="tableView">
+   <widget class="QTableWidget" name="tableView">
     <property name="geometry">
      <rect>
       <x>230</x>

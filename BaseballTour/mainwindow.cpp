@@ -35,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
     else
         ui->label_dbstatus->setText("Database connected");
-    QSqlQueryModel * modal = new QSqlQueryModel();
+//    QSqlQueryModel * modal = new QSqlQueryModel();
 
    // conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
@@ -43,10 +43,10 @@ MainWindow::MainWindow(QWidget *parent)
     qry->prepare("select * from MLBinfo");
     qry->exec();
 
-    modal->setQuery(*qry);
+//    modal->setQuery(*qry);
 
-    ui->tableView->setModel(modal);
-    ui->combo_team->setModel(modal);
+//    ui->tableView->setModel(modal);
+//    ui->combo_team->setModel(modal);
 
     conn.connClose();
 
@@ -56,6 +56,111 @@ MainWindow::MainWindow(QWidget *parent)
         souvenirsDB.setDatabaseName("../souvenirs.db");
 
         souvenirsDB.open();
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            QTableWidgetItem *itemTeam;
+            QTableWidgetItem *itemStadium;
+            QTableWidgetItem *itemCapacity;
+            QTableWidgetItem *itemTypology;
+            QTableWidgetItem *itemSurface;
+            QTableWidgetItem *itemDistance;
+            QTableWidgetItem *itemRoof;
+            QTableWidgetItem *itemDate;
+
+            QComboBox  *selectedSort;
+
+            QVector<StadiumInfo> stadiumVect;
+            QString league;
+            int index, currentRow;
+
+            selectedSort = ui->combo_sort;
+
+            if(selectedSort->currentText() == "Team")
+            {
+                stadiumVect = thisDatabase.sortedByTeamStadium("Team");
+            }
+
+            else if(selectedSort->currentText() == "Stadium")
+            {
+                stadiumVect = thisDatabase.sortedByTeamStadium("Stadium");
+            }
+            else if(selectedSort->currentText() == "Capacity")
+            {
+               stadiumVect = thisDatabase.sortedByCapacity();
+            }
+            else if(selectedSort->currentText() == "Typology")
+            {
+                stadiumVect = thisDatabase.sortedStadiumTypology();
+            }
+            else if(selectedSort->currentText() == "Surface")
+            {
+                stadiumVect = thisDatabase.surfaceSorted();
+            }
+            else if(selectedSort->currentText() == "Opening Date")
+            {
+                stadiumVect = thisDatabase.sortedChronologicalOrder();
+            }
+            else
+            {
+                 qDebug() << "ERROR, SORT NON-EXSISTENT.";
+            }
+            if(selectedSort->currentText() == "Stadium Age");
+            {
+                stadiumVect = thisDatabase.sortedChronologicalOrder();
+            }
+
+
+
+            index = 0;
+            currentRow = 0;
+            while(ui->tableView->rowCount()!=0)
+            {
+                ui->tableView->removeRow(0);   //when you get to each new item add the row
+            }
+            for(index = 0; index < stadiumVect.size(); index++)
+            {
+                //ui->tableView->insertRow(currentRow);
+                itemTeam = new QTableWidgetItem;
+                itemTeam->setText(stadiumVect[index].teamName);
+                ui->tableView->setItem(currentRow, 0, itemTeam);
+
+                itemStadium = new QTableWidgetItem;
+                itemStadium->setText(stadiumVect[index].stadiumName);
+                ui->tableView->setItem(currentRow, 1, itemStadium);
+
+                itemCapacity = new QTableWidgetItem;
+                itemCapacity->setText(QString::number(stadiumVect[index].capacity));
+                ui->tableView->setItem(currentRow, 2, itemCapacity);
+
+                itemTypology = new QTableWidgetItem;
+                itemTypology->setText(stadiumVect[index].typology);
+                ui->tableView->setItem(currentRow, 3, itemTypology);
+
+                itemSurface = new QTableWidgetItem;
+                itemSurface->setText(stadiumVect[index].surface);
+                ui->tableView->setItem(currentRow, 4, itemSurface);
+
+                itemDistance = new QTableWidgetItem;
+                itemDistance->setText(QString::number(stadiumVect[index].distanceToCenter));
+                ui->tableView->setItem(currentRow, 5, itemDistance);
+
+                itemRoof = new QTableWidgetItem;
+                itemRoof->setText(stadiumVect[index].roofType);
+                ui->tableView->setItem(currentRow, 6, itemRoof);
+
+                itemDate = new QTableWidgetItem;
+//                itemDate->setText(stadiumVect[index].dateOpen.toString(format));
+                ui->tableView->setItem(currentRow, 7, itemDate);
+
+                currentRow++;
+            }
+            ui->tableView->setRowCount(currentRow);
+            ui->tableView->resizeColumnsToContents();
+
+            ui->tableView->selectRow(0);
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Set table properties (resize to contents, fill the widget with last section, prevent editing)
 //    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
@@ -95,7 +200,7 @@ void MainWindow::on_combo_sort_activated(const QString &arg1)
 {
 
     BallparkDB conn;
-    QSqlQueryModel * modal = new QSqlQueryModel();
+//    QSqlQueryModel * modal = new QSqlQueryModel();
     conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
 
@@ -137,15 +242,15 @@ void MainWindow::on_combo_sort_activated(const QString &arg1)
         qry->prepare("select * from MLBinfo order by roofType");
      }
      qry->exec();
-     modal->setQuery(*qry);
-     ui->tableView->setModel(modal);
+//     modal->setQuery(*qry);
+//     ui->tableView->setModel(modal);
      conn.connClose();
      //ignore this
 }
 void MainWindow::on_combo_team_activated(const QString &arg1)
 {
     BallparkDB conn;
-    QSqlQueryModel * modal = new QSqlQueryModel();
+//    QSqlQueryModel * modal = new QSqlQueryModel();
     conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
 
@@ -295,10 +400,10 @@ void MainWindow::on_combo_team_activated(const QString &arg1)
         qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from MLBinfo where teamName = 'Minnesota Twins'");;
         qry->exec();
     }
-    modal->setQuery(*qry);
-    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
-    m->setSourceModel(modal);
-    ui->tableView->setModel(m);
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
     ui->tableView->setSortingEnabled(true);
     conn.connClose();
 
@@ -386,7 +491,7 @@ void MainWindow::on_reload_button_clicked()
     }
     else
         ui->label_dbstatus->setText("Database connected");
-    QSqlQueryModel * modal = new QSqlQueryModel();
+//    QSqlQueryModel * modal = new QSqlQueryModel();
 
    // conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
@@ -394,10 +499,10 @@ void MainWindow::on_reload_button_clicked()
     qry->prepare("select * from MLBinfo");
     qry->exec();
 
-    modal->setQuery(*qry);
+//    modal->setQuery(*qry);
 
-    ui->tableView->setModel(modal);
-    ui->combo_team->setModel(modal);
+//    ui->tableView->setModel(modal);
+//    ui->combo_team->setModel(modal);
 
     conn.connClose();
 }
@@ -405,43 +510,43 @@ void MainWindow::on_reload_button_clicked()
 void MainWindow::on_Ami_League_Button_clicked()
 {
     BallparkDB conn;
-    QSqlQueryModel * modal = new QSqlQueryModel();
+//    QSqlQueryModel * modal = new QSqlQueryModel();
     conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
     qry->prepare("select * from MLBinfo where league = 'American'order by stadiumName");;
 
     qry->exec();
-    modal->setQuery(*qry);
-    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
-    m->setSourceModel(modal);
-    ui->tableView->setModel(m);
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
     ui->tableView->setSortingEnabled(true);
 
     qry->exec();
-    modal->setQuery(*qry);
-    ui->tableView->setModel(modal);
+//    modal->setQuery(*qry);
+//    ui->tableView->setModel(modal);
     conn.connClose();
 }
 
 void MainWindow::on_Nat_Leagu_Button_clicked()
 {
     BallparkDB conn;
-    QSqlQueryModel * modal = new QSqlQueryModel();
+//    QSqlQueryModel * modal = new QSqlQueryModel();
     conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
 
     qry->prepare("select * from MLBinfo where league = 'National' order by stadiumName");
   //  qry->prepare("select * from MLBinfo where league = 'National' order by teamName");
     qry->exec();
-    modal->setQuery(*qry);
-    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
-    m->setSourceModel(modal);
-    ui->tableView->setModel(m);
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
     ui->tableView->setSortingEnabled(true);
 
     qry->exec();
-    modal->setQuery(*qry);
-    ui->tableView->setModel(modal);
+//    modal->setQuery(*qry);
+//    ui->tableView->setModel(modal);
     conn.connClose();
 }
 
@@ -450,7 +555,7 @@ void MainWindow::on_Open_Roof_Button_clicked()
 
     BallparkDB conn;
 
-    QSqlQueryModel * modal = new QSqlQueryModel();
+//    QSqlQueryModel * modal = new QSqlQueryModel();
     conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
     //QStringList data;
@@ -465,15 +570,15 @@ void MainWindow::on_Open_Roof_Button_clicked()
 
     data = i;
      ui->label_2->setText(data);
-    modal->setQuery(*qry);
-    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
-    m->setSourceModel(modal);
-    ui->tableView->setModel(m);
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
     ui->tableView->setSortingEnabled(true);
 
     qry->exec();
-    modal->setQuery(*qry);
-    ui->tableView->setModel(modal);
+//    modal->setQuery(*qry);
+//    ui->tableView->setModel(modal);
     conn.connClose();
 }
 
@@ -481,7 +586,7 @@ void MainWindow::on_pushButton_clicked()
 {
     BallparkDB conn;
 
-    QSqlQueryModel * modal = new QSqlQueryModel();
+//    QSqlQueryModel * modal = new QSqlQueryModel();
     conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
 
@@ -489,15 +594,15 @@ void MainWindow::on_pushButton_clicked()
     qry->prepare("select * from MLBinfo order by dateOpened");
     qry->exec();
 
-    modal->setQuery(*qry);
-    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
-    m->setSourceModel(modal);
-    ui->tableView->setModel(m);
+//    modal->setQuery(*qry);
+//    QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
+//    m->setSourceModel(modal);
+//    ui->tableView->setModel(m);
     ui->tableView->setSortingEnabled(true);
 
     qry->exec();
-    modal->setQuery(*qry);
-    ui->tableView->setModel(modal);
+//    modal->setQuery(*qry);
+//    ui->tableView->setModel(modal);
     conn.connClose();
 }
 
@@ -540,15 +645,15 @@ void MainWindow::on_push_souvenirs_clicked()
     souvenirsDB.open();
 
         MainWindow souvenirObj;
-        QSqlQueryModel * model=new QSqlQueryModel();
+//        QSqlQueryModel * model=new QSqlQueryModel();
 
         QSqlQuery * qry=new QSqlQuery(souvenirObj.souvenirsDB);
         qry->prepare("select souvenir, price from souvenirs");
 
         qry->exec();
 
-        model->setQuery(*qry);
-        ui->tableView->setModel(model);
+//        model->setQuery(*qry);
+//        ui->tableView->setModel(model);
 }
 
 void MainWindow::on_addSouvenirButton_clicked()
