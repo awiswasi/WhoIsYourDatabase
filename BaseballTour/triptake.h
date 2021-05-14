@@ -1,35 +1,35 @@
-//#ifndef TRIPTAKE_H
-//#define TRIPTAKE_H
+#ifndef TRIPTAKE_H
+#define TRIPTAKE_H
 
-//#include <QDialog>
-//#include <vector>
-//#include <string>
-//#include "dataBase.h"
+#include <QDialog>
+#include <vector>
+#include <string>
+#include "dataBase.h"
 
-//namespace Ui {
-//class TripTake;
-//}
+namespace Ui {
+class TripTake;
+}
 
-//class TripTake : public QDialog
-//{
-//    Q_OBJECT
+class TripTake : public QDialog
+{
+    Q_OBJECT
 
-//public:
-//    explicit TripTake(std::vector<College> inColleges, QWidget *parent = nullptr);
+public:
+    explicit TripTake(std::vector<College> inColleges, QWidget *parent = nullptr);
 
-//    ~TripTake();
+    ~TripTake();
 
-//private slots:
-//    void on_nextButton_clicked();
-//    void on_purchase();
+private slots:
+    void on_nextButton_clicked();
+    void on_purchase();
 
 
-//private:
-//    Ui::TripTake *ui;
-//    int currentCollege;
-//    std::vector<College> colleges;
-//    int currCol;
-//    double totalDistance = 0;
-//};
+private:
+    Ui::TripTake *ui;
+    int currentCollege;
+    std::vector<College> colleges;
+    int currCol;
+    double totalDistance = 0;
+};
 
-//#endif // TRIPTAKE_H
+#endif // TRIPTAKE_H
