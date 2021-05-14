@@ -564,7 +564,7 @@ void MainWindow::on_addSouvenirButton_clicked()
 
 }
 
-void MainWindow::on_push_plan_clicked()
-{
+//void MainWindow::on_push_plan_clicked()
+//{
 
-}
+//}
