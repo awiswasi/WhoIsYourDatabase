@@ -35,16 +35,17 @@ QVector<StadiumInfo> dbManager:: getStadiumInfo()
     {
         while(query.next()) //these seem to be coming out in alphabetical order by default
         {
-            myStructInfo.stadiumName = query.value(0).toString();
-            myStructInfo.teamName = query.value(1).toString();
-            myStructInfo.address = query.value(2).toString();
-            myStructInfo.capacity = query.value(3).toInt();
-            myStructInfo.phoneNumber = query.value(4).toString();
-            myStructInfo.surface = query.value(5).toString();
+            myStructInfo.teamName = query.value(0).toString();
+            myStructInfo.stadiumName = query.value(1).toString();
+            myStructInfo.capacity = query.value(2).toInt();
+            myStructInfo.location = query.value(3).toString();
+            myStructInfo.surface = query.value(4).toString();
+            myStructInfo.leagueType = query.value(5).toString();
             dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
             myStructInfo.dateOpen = dateTime1;
-            myStructInfo.leagueType = query.value(7).toString();
+            myStructInfo.distanceToCenter = query.value(7).toInt();
             myStructInfo.typology = query.value(8).toString();
+            myStructInfo.roofType = query.value(9).toString();
             infoVector.push_back(myStructInfo);
         }
     }
@@ -73,16 +74,17 @@ QVector<StadiumInfo> dbManager:: sortedByCapacity()
 
         while(query.next()) //these seem to be coming out in alphabetical order by default
         {
-            myStructInfo.stadiumName = query.value(0).toString();
-            myStructInfo.teamName = query.value(1).toString();
-            myStructInfo.address = query.value(2).toString();
-            myStructInfo.capacity = query.value(3).toInt();
-            myStructInfo.phoneNumber = query.value(4).toString();
-            myStructInfo.surface = query.value(5).toString();
+            myStructInfo.teamName = query.value(0).toString();
+            myStructInfo.stadiumName = query.value(1).toString();
+            myStructInfo.capacity = query.value(2).toInt();
+            myStructInfo.location = query.value(3).toString();
+            myStructInfo.surface = query.value(4).toString();
+            myStructInfo.leagueType = query.value(5).toString();
             dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
             myStructInfo.dateOpen = dateTime1;
-            myStructInfo.leagueType = query.value(7).toString();
+            myStructInfo.distanceToCenter = query.value(7).toInt();
             myStructInfo.typology = query.value(8).toString();
+            myStructInfo.roofType = query.value(9).toString();
             capacityVector.push_back(myStructInfo);
         }
     }
@@ -156,16 +158,17 @@ QVector<StadiumInfo> dbManager:: sortedByTeamStadium(QString name)
 
             while(query.next()) //these seem to be coming out in alphabetical order by default
             {
-                myStructInfo.stadiumName = query.value(0).toString();
-                myStructInfo.teamName = query.value(1).toString();
-                myStructInfo.address = query.value(2).toString();
-                myStructInfo.capacity = query.value(3).toInt();
-                myStructInfo.phoneNumber = query.value(4).toString();
-                myStructInfo.surface = query.value(5).toString();
+                myStructInfo.teamName = query.value(0).toString();
+                myStructInfo.stadiumName = query.value(1).toString();
+                myStructInfo.capacity = query.value(2).toInt();
+                myStructInfo.location = query.value(3).toString();
+                myStructInfo.surface = query.value(4).toString();
+                myStructInfo.leagueType = query.value(5).toString();
                 dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
                 myStructInfo.dateOpen = dateTime1;
-                myStructInfo.leagueType = query.value(7).toString();
+                myStructInfo.distanceToCenter = query.value(7).toInt();
                 myStructInfo.typology = query.value(8).toString();
+                myStructInfo.roofType = query.value(9).toString();
                 sortVector.push_back(myStructInfo);
             }
         }
@@ -194,16 +197,17 @@ QVector<StadiumInfo> dbManager:: sortedStadiumTypology()
 
         while(query.next()) //these seem to be coming out in alphabetical order by default
         {
-            myStructInfo.stadiumName = query.value(0).toString();
-            myStructInfo.teamName = query.value(1).toString();
-            myStructInfo.address = query.value(2).toString();
-            myStructInfo.capacity = query.value(3).toInt();
-            myStructInfo.phoneNumber = query.value(4).toString();
-            myStructInfo.surface = query.value(5).toString();
+            myStructInfo.teamName = query.value(0).toString();
+            myStructInfo.stadiumName = query.value(1).toString();
+            myStructInfo.capacity = query.value(2).toInt();
+            myStructInfo.location = query.value(3).toString();
+            myStructInfo.surface = query.value(4).toString();
+            myStructInfo.leagueType = query.value(5).toString();
             dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
             myStructInfo.dateOpen = dateTime1;
-            myStructInfo.leagueType = query.value(7).toString();
+            myStructInfo.distanceToCenter = query.value(7).toInt();
             myStructInfo.typology = query.value(8).toString();
+            myStructInfo.roofType = query.value(9).toString();
             typologyVector.push_back(myStructInfo);
         }
     }
@@ -234,16 +238,17 @@ QVector<StadiumInfo> dbManager:: surfaceSorted()
 
         while(query.next()) //these seem to be coming out in alphabetical order by default
         {
-            myStructInfo.stadiumName = query.value(0).toString();
-            myStructInfo.teamName = query.value(1).toString();
-            myStructInfo.address = query.value(2).toString();
-            myStructInfo.capacity = query.value(3).toInt();
-            myStructInfo.phoneNumber = query.value(4).toString();
-            myStructInfo.surface = query.value(5).toString();
+            myStructInfo.teamName = query.value(0).toString();
+            myStructInfo.stadiumName = query.value(1).toString();
+            myStructInfo.capacity = query.value(2).toInt();
+            myStructInfo.location = query.value(3).toString();
+            myStructInfo.surface = query.value(4).toString();
+            myStructInfo.leagueType = query.value(5).toString();
             dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
             myStructInfo.dateOpen = dateTime1;
-            myStructInfo.leagueType = query.value(7).toString();
+            myStructInfo.distanceToCenter = query.value(7).toInt();
             myStructInfo.typology = query.value(8).toString();
+            myStructInfo.roofType = query.value(9).toString();
             surfaceVector.push_back(myStructInfo);
         }
     }
@@ -272,16 +277,17 @@ QVector<StadiumInfo> dbManager:: sortedChronologicalOrder()
 //        qDebug() << "made it here\n";
         while(query.next()) //these seem to be coming out in alphabetical order by default
         {
-            myStructInfo.stadiumName = query.value(0).toString();
-            myStructInfo.teamName = query.value(1).toString();
-            myStructInfo.address = query.value(2).toString();
-            myStructInfo.capacity = query.value(3).toInt();
-            myStructInfo.phoneNumber = query.value(4).toString();
-            myStructInfo.surface = query.value(5).toString();
+            myStructInfo.teamName = query.value(0).toString();
+            myStructInfo.stadiumName = query.value(1).toString();
+            myStructInfo.capacity = query.value(2).toInt();
+            myStructInfo.location = query.value(3).toString();
+            myStructInfo.surface = query.value(4).toString();
+            myStructInfo.leagueType = query.value(5).toString();
             dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
             myStructInfo.dateOpen = dateTime1;
-            myStructInfo.leagueType = query.value(7).toString();
+            myStructInfo.distanceToCenter = query.value(7).toInt();
             myStructInfo.typology = query.value(8).toString();
+            myStructInfo.roofType = query.value(9).toString();
             chronologicalVector.push_back(myStructInfo);
         }
     }
@@ -583,15 +589,27 @@ bool dbManager::addTeam(StadiumInfo myStadiumInfo, QVector<DistanceInfo>tempDist
 
 
 
+//    myStructInfo.teamName = query.value(0).toString();
+//    myStructInfo.stadiumName = query.value(1).toString();
+//    myStructInfo.capacity = query.value(2).toInt();
+//    myStructInfo.location = query.value(3).toString();
+//    myStructInfo.surface = query.value(4).toString();
+//    myStructInfo.leagueType = query.value(5).toString();
+//    dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
+//    myStructInfo.dateOpen = dateTime1;
+//    myStructInfo.distanceToCenter = query.value(7).toInt();
+//    myStructInfo.typology = query.value(8).toString();
+//    myStructInfo.roofType = query.value(9).toString();
+
     //Insert the stadium information
 
     query.prepare("Insert into mlb(Stadium, Team, Address, Capacity, [Phone Number], Surface, [Date Opened], [League Type], Typology) values ('"
 
-                   +myStadiumInfo.stadiumName+ "', '" +myStadiumInfo.teamName+ "', '" +myStadiumInfo.address+ "', '" +QString::number(myStadiumInfo.capacity)+ "', '"
+                   +myStadiumInfo.teamName+ "', '" +myStadiumInfo.stadiumName+ "', '" +QString::number(myStadiumInfo.capacity)+ "', '" +myStadiumInfo.location+ "', '"
 
-                   +myStadiumInfo.phoneNumber+ "', '" +myStadiumInfo.surface+ "', '" +myStadiumInfo.dateOpen.toString(format)+ "', '" +myStadiumInfo.leagueType+ "', '"
+                   +myStadiumInfo.surface+ "', '" +myStadiumInfo.leagueType+ "', '" +myStadiumInfo.dateOpen.toString(format)+ "', '" +QString::number(myStadiumInfo.distanceToCenter)+ "', '"
 
-                   +myStadiumInfo.typology+ "')");
+                   +myStadiumInfo.typology+ "', '" + myStadiumInfo.roofType+ "')");
 
     bool isTrue = true;
 
@@ -766,16 +784,17 @@ QVector<StadiumInfo> dbManager::getInfo(QString teamName)
    {
        if(query.next())
        {
-           myStructInfo.stadiumName = query.value(0).toString();
-           myStructInfo.teamName = query.value(1).toString();
-           myStructInfo.address = query.value(2).toString();
-           myStructInfo.capacity = query.value(3).toInt();
-           myStructInfo.phoneNumber = query.value(4).toString();
-           myStructInfo.surface = query.value(5).toString();
+           myStructInfo.teamName = query.value(0).toString();
+           myStructInfo.stadiumName = query.value(1).toString();
+           myStructInfo.capacity = query.value(2).toInt();
+           myStructInfo.location = query.value(3).toString();
+           myStructInfo.surface = query.value(4).toString();
+           myStructInfo.leagueType = query.value(5).toString();
            dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
            myStructInfo.dateOpen = dateTime1;
-           myStructInfo.leagueType = query.value(7).toString();
+           myStructInfo.distanceToCenter = query.value(7).toInt();
            myStructInfo.typology = query.value(8).toString();
+           myStructInfo.roofType = query.value(9).toString();
            myVector.push_back(myStructInfo);
        }
        else

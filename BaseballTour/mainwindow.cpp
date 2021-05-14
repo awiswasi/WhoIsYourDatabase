@@ -563,8 +563,3 @@ void MainWindow::on_addSouvenirButton_clicked()
     addSouvenirs->show();
 
 }
-
-void MainWindow::on_push_plan_clicked()
-{
-
-}
