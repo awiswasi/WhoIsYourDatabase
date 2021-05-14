@@ -285,6 +285,8 @@ class MainWindow : public QMainWindow
                 return temp;
             }
 
+            void on_editButton_clicked();
+
 private:
         bool isAdmin;
         QString team;
