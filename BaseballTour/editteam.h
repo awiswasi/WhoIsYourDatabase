@@ -15,6 +15,9 @@ public:
     explicit editTeam(QWidget *parent = nullptr);
     ~editTeam();
 
+private slots:
+    void on_SaveButton_clicked();
+
 private:
     Ui::editTeam *ui;
 };
