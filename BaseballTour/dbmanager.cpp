@@ -587,20 +587,6 @@ bool dbManager::addTeam(StadiumInfo myStadiumInfo, QVector<DistanceInfo>tempDist
 
     QSqlQuery query2(db);
 
-
-
-//    myStructInfo.teamName = query.value(0).toString();
-//    myStructInfo.stadiumName = query.value(1).toString();
-//    myStructInfo.capacity = query.value(2).toInt();
-//    myStructInfo.location = query.value(3).toString();
-//    myStructInfo.surface = query.value(4).toString();
-//    myStructInfo.leagueType = query.value(5).toString();
-//    dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
-//    myStructInfo.dateOpen = dateTime1;
-//    myStructInfo.distanceToCenter = query.value(7).toInt();
-//    myStructInfo.typology = query.value(8).toString();
-//    myStructInfo.roofType = query.value(9).toString();
-
     //Insert the stadium information
 
     query.prepare("Insert into mlb(Stadium, Team, Address, Capacity, [Phone Number], Surface, [Date Opened], [League Type], Typology) values ('"

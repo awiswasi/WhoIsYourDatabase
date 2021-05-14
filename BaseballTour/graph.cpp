@@ -122,7 +122,6 @@ QVector<CurrLocal> Graph::Dijkstras()
     double prevShortest = 10000000;
     double shortestInR = prevShortest;
     QVector<StadiumInfo> temp = db.sortedByTeamStadium("Stadium");
-    int size = temp.size();
     while(iter < V)
     {
         for(int j = 0; j < temp.size(); j++)
