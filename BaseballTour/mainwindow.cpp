@@ -82,6 +82,10 @@ MainWindow::MainWindow(QWidget *parent)
 //    connect(ui->campusTable,SIGNAL(currentRowChanged(int)), this, SLOT(getCollegeIndex(int)));
 
     //isAdmin = false;
+
+    ui->tableView->resizeColumnsToContents();
+//    ui->tableView->horizontalHeader()->stretchLastSection();
+
 }
 
 MainWindow::~MainWindow()
@@ -557,5 +561,10 @@ void MainWindow::on_addSouvenirButton_clicked()
 
     addSouvenirs = new addsouvenir(this);
     addSouvenirs->show();
+
+}
+
+void MainWindow::on_push_plan_clicked()
+{
 
 }

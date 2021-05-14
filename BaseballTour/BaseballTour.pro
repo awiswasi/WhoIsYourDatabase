@@ -17,7 +17,9 @@ SOURCES += \
     addsouvenir.cpp \
     logindialog.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    tripplan.cpp \
+    triptake.cpp
 
 HEADERS += \
     ballparkdb.h \
@@ -28,13 +30,17 @@ HEADERS += \
     stadiumstructs.h \
     addsouvenir.h \
     logindialog.h \
-    mainwindow.h
+    mainwindow.h \
+    tripplan.h \
+    triptake.h
 
 FORMS += \
     addsouvenir.ui \
     logindialog.ui \
     mainwindow.ui \
-    graph.ui
+    graph.ui \
+    tripplan.ui \
+    triptake.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -217,15 +217,15 @@ public:
 
 
     /*!
-     * \brief citiesToTisit: Accumulates a queue of cities ordered by distance in ascending order
+     * \brief citiesToVisit: Accumulates a queue of cities ordered by distance in ascending order
      * \param StartingCity
      * \return t/f result of the operation
      */
-    QQueue<QString> citiesToTisit(QString StartingCity);
+    QQueue<QString> citiesToVisit(QString StartingCity);
 
 
     /*!
-     * \brief citiesToTisit: Accumulates a queue of cities ordered by distance in ascending order
+     * \brief citiesToVisit: Accumulates a queue of cities ordered by distance in ascending order
      */
     void addCitiesFromDatabase();
 
@@ -477,15 +477,15 @@ private:
 //    QVector<StadiumInfo> sortedByLeague(QString league);
 
 //    /*!
-//     * \brief citiesToTisit: Accumulates a queue of cities ordered by distance in ascending order
+//     * \brief citiesToVisit: Accumulates a queue of cities ordered by distance in ascending order
 //     * \param StartingCity
 //     * \return t/f result of the operation
 //     */
-//    QQueue<QString> citiesToTisit(QString StartingCity);
+//    QQueue<QString> citiesToVisit(QString StartingCity);
 
 
 //    /*!
-//     * \brief citiesToTisit: Accumulates a queue of cities ordered by distance in ascending order
+//     * \brief citiesToVisit: Accumulates a queue of cities ordered by distance in ascending order
 //     */
 //    void addCitiesFromDatabase();
 
