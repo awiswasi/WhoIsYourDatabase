@@ -19,6 +19,8 @@ SOURCES += \
     logindialog.cpp \
     main.cpp \
     mainwindow.cpp \
+    planyourtrip.cpp \
+    takeyourtrip.cpp \
     tripplan.cpp \
     triptake.cpp
 
@@ -29,10 +31,12 @@ HEADERS += \
     editteam.h \
     graph.h \
     graphmst.h \
+    planyourtrip.h \
     stadiumstructs.h \
     addsouvenir.h \
     logindialog.h \
     mainwindow.h \
+    takeyourtrip.h \
     tripplan.h \
     triptake.h
 
@@ -42,6 +46,8 @@ FORMS += \
     logindialog.ui \
     mainwindow.ui \
     graph.ui \
+    planyourtrip.ui \
+    takeyourtrip.ui \
     tripplan.ui \
     triptake.ui
 
