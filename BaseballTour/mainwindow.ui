@@ -296,27 +296,27 @@
    <widget class="QPushButton" name="editButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>630</y>
-      <width>75</width>
-      <height>23</height>
+      <x>20</x>
+      <y>672</y>
+      <width>121</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Edit</string>
+     <string>Add Team</string>
     </property>
    </widget>
    <widget class="QPushButton" name="addSouvenirButton">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>630</y>
-      <width>75</width>
-      <height>23</height>
+      <x>20</x>
+      <y>710</y>
+      <width>121</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Add</string>
+     <string>Edit  Souvenirs</string>
     </property>
    </widget>
    <widget class="QPushButton" name="saveButton">
