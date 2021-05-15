@@ -52,18 +52,22 @@ void editTeam::on_SaveButton_clicked()
     BallparkDB conn;
     conn.connOpen();
 
-
     qDebug() << changes;
 
     QSqlQuery update;
     update.prepare(changes);
 
     if(update.exec()){
-        qDebug()<<"the student is successful update.";
+        qDebug()<<"Added team.";
     }else{
-        qDebug()<<"the student is NOT successful update.";
+        qDebug()<<"Something went wrong";
         qDebug()<<"ERROR! " << update.lastError();
     }
 
     conn.connClose();
+}
+
+void editTeam::on_CancelButton_clicked()
+{
+    this->close();
 }

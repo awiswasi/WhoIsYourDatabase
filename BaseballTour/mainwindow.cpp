@@ -53,10 +53,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->statusBar()->setSizeGripEnabled(false);
 
-    QSqlDatabase souvenirsDB = QSqlDatabase::addDatabase("QSQLITE");
-        souvenirsDB.setDatabaseName("../souvenirs.db");
+//    QSqlDatabase souvenirsDB = QSqlDatabase::addDatabase("QSQLITE");
+//        souvenirsDB.setDatabaseName("../souvenirs.db");
 
-        souvenirsDB.open();
+//        souvenirsDB.open();
 
     // Set table properties (resize to contents, fill the widget with last section, prevent editing)
 //    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
@@ -590,9 +590,13 @@ void MainWindow::on_push_souvenirs_clicked()
 void MainWindow::on_addSouvenirButton_clicked()
 {
     // open a new dialog window to add a souvenir
+    QString arg1 = ui->combo_team->currentText();
 
     addSouvenirs = new addsouvenir(this);
+    addSouvenirs->setData(arg1);
     addSouvenirs->show();
+
+
 
 }
 

@@ -18,6 +18,8 @@ public:
 private slots:
     void on_SaveButton_clicked();
 
+    void on_CancelButton_clicked();
+
 private:
     Ui::editTeam *ui;
 };
