@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="lineEdit_teamname">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -153,7 +153,7 @@
     <string>Roof Type</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="lineEdit_stadiumname">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -163,7 +163,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="lineEdit_seatingcapacity">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -173,7 +173,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="lineEdit_location">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -183,7 +183,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLineEdit" name="lineEdit_playingsurface">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -193,7 +193,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_6">
+  <widget class="QLineEdit" name="lineEdit_league">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -203,7 +203,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_7">
+  <widget class="QLineEdit" name="lineEdit_distancetocenter">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -213,7 +213,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_8">
+  <widget class="QLineEdit" name="lineEdit_dateopened">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -223,7 +223,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_9">
+  <widget class="QLineEdit" name="lineEdit_ballparktypology">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -233,7 +233,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_10">
+  <widget class="QLineEdit" name="lineEdit_rooftype">
    <property name="geometry">
     <rect>
      <x>120</x>

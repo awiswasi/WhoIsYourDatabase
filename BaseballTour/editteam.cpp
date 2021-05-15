@@ -5,7 +5,7 @@
 #include <QSqlQueryModel>
 #include <QtSql>
 #include <QSqlDatabase>
-
+#include "ballparkdb.h"
 
 editTeam::editTeam(QWidget *parent) :
     QDialog(parent),
@@ -33,21 +33,27 @@ void editTeam::on_SaveButton_clicked()
     QString roofType;
 
 
-    teamName =ui->label->text();
-    stadiumName =ui->label_2->text();
-    seatingCapacity =ui->label_3->text();
-    location =ui->label_4->text();
-    playingSurface =ui->label_5->text();
-    league =ui->label_6->text();
-    dateOpened =ui->label_7->text();
-    distanceToCenter =ui->label_8->text();
-    ballparkTypology =ui->label_9->text();
-    roofType =ui->label_10->text();
+    teamName =ui->lineEdit_teamname->text();
+    stadiumName =ui->lineEdit_stadiumname->text();
+    seatingCapacity =ui->lineEdit_seatingcapacity->text();
+    location =ui->lineEdit_location->text();
+    playingSurface =ui->lineEdit_playingsurface->text();
+    league =ui->lineEdit_league->text();
+    dateOpened =ui->lineEdit_dateopened->text();
+    distanceToCenter =ui->lineEdit_distancetocenter->text();
+    ballparkTypology =ui->lineEdit_ballparktypology->text();
+    roofType =ui->lineEdit_rooftype->text();
 
 
     QString changes;
-    changes.append("insert into _MLBinfo (teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType) values ('"+teamName+"', '"+stadiumName+"', '"+seatingCapacity+"', '"+location+"', '"+playingSurface+"', '"+league+"', '"+dateOpened+"', '"+distanceToCenter+"', '"+ballparkTypology+"', '"+roofType+"')");
+    changes.append("insert into _MLBinfo (teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType) values ('"
+                                    +teamName+"', '"+stadiumName+"', '"+seatingCapacity+"', '"+location+"', '"+playingSurface+"', '"+league+"', '"+dateOpened+"', '"+distanceToCenter+"', '"+ballparkTypology+"', '"+roofType+"')");
 
+    BallparkDB conn;
+    conn.connOpen();
+
+
+    qDebug() << changes;
 
     QSqlQuery update;
     update.prepare(changes);
@@ -59,4 +65,5 @@ void editTeam::on_SaveButton_clicked()
         qDebug()<<"ERROR! " << update.lastError();
     }
 
+    conn.connClose();
 }
