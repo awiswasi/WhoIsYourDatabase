@@ -46,7 +46,7 @@ void editTeam::on_SaveButton_clicked()
 
 
     QString changes;
-    changes.append("UPDATE _MLBinfo SET teamName='"+teamName+"', stadiumName='"+stadiumName+"', seatingCapacity='"+seatingCapacity+"', location='"+location+"', playingSurface='"+playingSurface+"', league='"+league+"', dateOpened='"+dateOpened+"', distanceToCenter='"+distanceToCenter+"', ballparkTypology='"+ballparkTypology+"', roofType='"+roofType+"'");
+    changes.append("insert into _MLBinfo (teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType) values ('"+teamName+"', '"+stadiumName+"', '"+seatingCapacity+"', '"+location+"', '"+playingSurface+"', '"+league+"', '"+dateOpened+"', '"+distanceToCenter+"', '"+ballparkTypology+"', '"+roofType+"')");
 
 
     QSqlQuery update;

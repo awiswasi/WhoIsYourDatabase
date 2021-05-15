@@ -19,6 +19,7 @@
 #include <QString>
 #include <QTableWidget>
 #include <iostream>
+#include "editteam.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -597,6 +598,10 @@ void MainWindow::on_addSouvenirButton_clicked()
 
 void MainWindow::on_editButton_clicked()
 {
+    editTeam *addTeam = new editTeam(this);
+    addTeam->show();
+
+
 //    QSqlTableModel *GetTable = new QSqlTableModel(ui->tableView);
 
 ////    QString arg1 = ui->tableView->model()->index(ui->tableView->selectionModel()->currentIndex().row(),0).data().toString();
