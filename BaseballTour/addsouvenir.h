@@ -30,11 +30,7 @@ private slots:
 
     void on_cancelButton_clicked();
 
-    void on_cancelButton_2_clicked();
-
     void on_connectButton_clicked();
-
-    void on_comboBox_activated(const QString &arg1);
 
     void on_editSouvenirButton_clicked();
 
