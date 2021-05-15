@@ -669,3 +669,11 @@ void MainWindow::on_editButton_clicked()
 
 
 }
+
+
+void MainWindow::on_push_plan_clicked()
+{
+    planTrip = new planyourtrip(this);
+    planTrip->show();
+}
+

@@ -20,6 +20,7 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include "addsouvenir.h"
+#include "planyourtrip.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -287,6 +288,9 @@ class MainWindow : public QMainWindow
 
             void on_editButton_clicked();
 
+
+            void on_push_plan_clicked();
+
 private:
         bool isAdmin;
         QString team;
@@ -315,6 +319,8 @@ private:
         QVector<QString> visited;
         QVector<int> selectInd;
         QVector<QVector<CurrLocal>> selectDist;
+        planyourtrip *planTrip;
+
 
     public:
         MainWindow(QWidget *parent = nullptr);
