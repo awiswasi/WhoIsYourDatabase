@@ -22,7 +22,8 @@ SOURCES += \
     planyourtrip.cpp \
     takeyourtrip.cpp \
     tripplan.cpp \
-    triptake.cpp
+    triptake.cpp \
+    triptake_old.cpp
 
 HEADERS += \
     ballparkdb.h \
@@ -38,7 +39,8 @@ HEADERS += \
     mainwindow.h \
     takeyourtrip.h \
     tripplan.h \
-    triptake.h
+    triptake.h \
+    triptake_old.h
 
 FORMS += \
     addsouvenir.ui \
@@ -49,7 +51,8 @@ FORMS += \
     planyourtrip.ui \
     takeyourtrip.ui \
     tripplan.ui \
-    triptake.ui
+    triptake.ui \
+    triptake_old.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -25,8 +25,6 @@ QVector<StadiumInfo> dbManager:: getStadiumInfo()
     QSqlQuery query(db);
     QVector<StadiumInfo> infoVector;
     StadiumInfo myStructInfo;
-    QString format = "MMMM d, yyyy"; //Format for QT DATE TIME CLASS
-    QDateTime dateTime1;
 
     //select in the order they are given
     query.prepare("SELECT * FROM MLB");
