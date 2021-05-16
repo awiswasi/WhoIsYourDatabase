@@ -94,6 +94,151 @@
      <pointsize>10</pointsize>
     </font>
    </property>
+   <item>
+    <property name="text">
+     <string>Arizona Diamondbacks</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Atlanta Braves</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Baltimore Orioles</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Boston Red Sox</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Chicago White Sox</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Cincinnati Reds</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Cleveland Indians</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Colorado Rockies</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Detroit Tigers</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Houston Astros</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Kansas City Royals</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Los Angeles Angels</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Los Angeles Dodgers</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Miami Marlins</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Milwaukee Brewers</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Minnesota Twins</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>New York Mets</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>New York Yankees</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Oakland Athletics</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Philadelphia Phillies</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Pittsburgh Pirates</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>San Diego Padres</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>San Francisco Padres</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Seattle Mariners</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>St. Louis Cardinals</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Tampa Bay Rays</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Texas Rangers</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Toronto Blue Jays</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Washington Nationals</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="label_PlanForMe">
    <property name="geometry">
@@ -127,6 +272,161 @@
      <pointsize>10</pointsize>
     </font>
    </property>
+   <item>
+    <property name="text">
+     <string>Arizona Diamondbacks</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Atlanta Braves</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Baltimore Orioles</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Boston Red Sox</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Chicago Cubs</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Chicago White Sox</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Cincinnati Reds</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Cleveland Indians</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Colorado Rockies</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Detroit Tigers</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Houston Astros</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Kansas City Royals</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Los Angeles Angels</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Los Angeles Dodgers</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Miami Marlins</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Milwaukee Brewers</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Minnesota Twins</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>New York Mets</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>New York Mets</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>New York Yankees</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Oakland Athletics</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Philadelphia Phillies</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Pittsburgh Pirates</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>San Diego Padres</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>San Francisco Giants</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Seattle Mariners</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>St.Louis Cardinals</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Tampa Bay Rays</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Texas Rangers</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Toronto Blue Jays</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Washington Nationals</string>
+    </property>
+   </item>
   </widget>
   <widget class="QPushButton" name="button_CustomTrip">
    <property name="geometry">

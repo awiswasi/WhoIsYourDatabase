@@ -202,19 +202,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="reload_button">
-    <property name="geometry">
-     <rect>
-      <x>1010</x>
-      <y>590</y>
-      <width>93</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reload Table</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="Ami_League_Button">
     <property name="geometry">
      <rect>
@@ -259,7 +246,7 @@
      <rect>
       <x>230</x>
       <y>590</y>
-      <width>141</width>
+      <width>121</width>
       <height>16</height>
      </rect>
     </property>
@@ -278,19 +265,6 @@
     </property>
     <property name="text">
      <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>580</y>
-      <width>321</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>sort by stadium age (oldest to youngest) </string>
     </property>
    </widget>
    <widget class="QPushButton" name="editButton">
@@ -345,6 +319,97 @@
      <string>Add</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>610</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Total capacity:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>640</y>
+      <width>171</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Greatest distance to the center:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>660</y>
+      <width>171</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Smallest distance to the center:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="openRoofLabel">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>590</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="capacityLabel">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>610</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="showGreatest">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>640</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="showSmallest">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>660</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -352,7 +417,7 @@
      <x>0</x>
      <y>0</y>
      <width>1455</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAdmin">

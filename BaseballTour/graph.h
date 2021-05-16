@@ -86,7 +86,7 @@ public:
         const int SIZE = 30;
         QVector<int> dist;
     }
-
+    QVector<StadiumInfo> sortedByTeamStadium(QString name);
     QVector<CurrLocal> Dijkstras();
 
     /*************************************************************************************************************************************************************

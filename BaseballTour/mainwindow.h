@@ -291,6 +291,10 @@ class MainWindow : public QMainWindow
 
             void on_push_plan_clicked();
 
+            void on_showGreatest_clicked();
+
+            void on_showSmallest_clicked();
+
 private:
         bool isAdmin;
         QString team;

@@ -49,6 +49,20 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tableView->setModel(modal);
     ui->combo_team->setModel(modal);
 
+    int total = 0;
+    QString str;
+    for(int i = 0; i < 30; i++)
+    {
+        total += modal->record(i).value(2).toInt();
+    }
+    str = QString::number(total);
+    qDebug() << total;
+    //QString str = total.toString();
+   // QString str = modal->record(0).value(2).toString();
+    ui->capacityLabel->setText(str);
+
+    //ui->capacityLabel->setText("");
+
     conn.connClose();
 
     this->statusBar()->setSizeGripEnabled(false);
@@ -463,13 +477,16 @@ void MainWindow::on_Open_Roof_Button_clicked()
 
     qry->prepare("select * from _MLBinfo where roofType = 'Open'");
     qry->exec();
-    int i = 0;
-    if(qry->isActive())
-        while(qry->next())
-            i++;
 
-    data = i;
-     ui->label_2->setText(data);
+    int openRoofTotal = 0;
+    QString openRoofStr;
+    for(int i = 0; i < 23; i++)
+    {
+        openRoofTotal = i + 1;
+    }
+    openRoofStr = QString::number(openRoofTotal);
+    ui->openRoofLabel->setText(openRoofStr);
+
     modal->setQuery(*qry);
     QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
     m->setSourceModel(modal);
@@ -675,5 +692,37 @@ void MainWindow::on_push_plan_clicked()
 {
     planTrip = new planyourtrip(this);
     planTrip->show();
+}
+
+
+void MainWindow::on_showGreatest_clicked()
+{
+    BallparkDB conn;
+    QSqlQueryModel * modal = new QSqlQueryModel();
+    conn.connOpen();
+    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+
+    qry->prepare("select * from _MLBinfo order by distanceToCenter DESC limit 2");
+
+    qry->exec();
+    modal->setQuery(*qry);
+    ui->tableView->setModel(modal);
+    conn.connClose();
+}
+
+
+void MainWindow::on_showSmallest_clicked()
+{
+    BallparkDB conn;
+    QSqlQueryModel * modal = new QSqlQueryModel();
+    conn.connOpen();
+    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+
+    qry->prepare("select * from _MLBinfo order by distanceToCenter ASC limit 2");
+
+    qry->exec();
+    modal->setQuery(*qry);
+    ui->tableView->setModel(modal);
+    conn.connClose();
 }
 

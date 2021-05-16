@@ -45,63 +45,63 @@
 //    delete ui;
 //}
 
-////std::vector<College> TripPlan::sortColleges(int startingCollege, std::vector<College> collegesLeft, std::vector<College> collegesDone = {}, std::vector<int> doneIndexes = {})
-////{
-////    qDebug("Function called");
+//std::vector<College> TripPlan::sortColleges(int startingCollege, std::vector<College> collegesLeft, std::vector<College> collegesDone = {}, std::vector<int> doneIndexes = {})
+//{
+//    qDebug("Function called");
 
-////    int nextCollege = 0;
-////    double smallestNext = 999999999;
-////    bool found;
-////    int j;
+//    int nextCollege = 0;
+//    double smallestNext = 999999999;
+//    bool found;
+//    int j;
 
-////    if(collegesDone.size() == collegesLeft.size())
-////    {
-////        for (College i : collegesDone)
-////        {
-////            qDebug() << i.getName().c_str();
-////        }
+//    if(collegesDone.size() == collegesLeft.size())
+//    {
+//        for (College i : collegesDone)
+//        {
+//            qDebug() << i.getName().c_str();
+//        }
 
-////        return collegesDone;
-////    }
-////    else
-////    {
-////        collegesDone.push_back(collegesLeft[startingCollege]);
-////        doneIndexes.push_back(startingCollege);
+//        return collegesDone;
+//    }
+//    else
+//    {
+//        collegesDone.push_back(collegesLeft[startingCollege]);
+//        doneIndexes.push_back(startingCollege);
 
-////        for(int i = 0; i < int(collegesLeft.size() - 1); i++)
-////        {
-////            if(smallestNext > collegesLeft[startingCollege].getDistances(i).distanceBetween)
-////            {
-////                found = false;
-////                j = 0;
+//        for(int i = 0; i < int(collegesLeft.size() - 1); i++)
+//        {
+//            if(smallestNext > collegesLeft[startingCollege].getDistances(i).distanceBetween)
+//            {
+//                found = false;
+//                j = 0;
 
-////                while(!found && j < int(collegesLeft.size()))
-////                {
-////                    if(collegesLeft[j].getName() == collegesLeft[startingCollege].getDistances(i).endingCollege)
-////                    {
-////                        found = true;
-////                        qDebug() << collegesLeft[startingCollege].getDistances(i).endingCollege.c_str();
-////                    }
-////                    else
-////                    {
-////                        j++;
-////                    }
-////                }
+//                while(!found && j < int(collegesLeft.size()))
+//                {
+//                    if(collegesLeft[j].getName() == collegesLeft[startingCollege].getDistances(i).endingCollege)
+//                    {
+//                        found = true;
+//                        qDebug() << collegesLeft[startingCollege].getDistances(i).endingCollege.c_str();
+//                    }
+//                    else
+//                    {
+//                        j++;
+//                    }
+//                }
 
-////                if(!std::count(doneIndexes.begin(), doneIndexes.end(), j))
-////                {
-////                    smallestNext = collegesLeft[startingCollege].getDistances(i).distanceBetween;
-////                    qDebug() << "               MY ASSIGNMENT" << smallestNext;
-////                    if(collegesDone[collegesDone.size()-1].distanceTraveled > smallestNext && smallestNext != 0 || collegesDone[collegesDone.size()-1].distanceTraveled==0)
-////                        collegesDone[collegesDone.size()-1].distanceTraveled = smallestNext;
-////                    nextCollege = j;
-////                }
-////            }
-////        }
-////    }
-////    qDebug() << "                 CALLED HERE  " << smallestNext;
-////    return sortColleges(nextCollege,collegesLeft,collegesDone,doneIndexes);
-////}
+//                if(!std::count(doneIndexes.begin(), doneIndexes.end(), j))
+//                {
+//                    smallestNext = collegesLeft[startingCollege].getDistances(i).distanceBetween;
+//                    qDebug() << "               MY ASSIGNMENT" << smallestNext;
+//                    if(collegesDone[collegesDone.size()-1].distanceTraveled > smallestNext && smallestNext != 0 || collegesDone[collegesDone.size()-1].distanceTraveled==0)
+//                        collegesDone[collegesDone.size()-1].distanceTraveled = smallestNext;
+//                    nextCollege = j;
+//                }
+//            }
+//        }
+//    }
+//    qDebug() << "                 CALLED HERE  " << smallestNext;
+//    return sortColleges(nextCollege,collegesLeft,collegesDone,doneIndexes);
+//}
 
 ////std::vector<College> TripPlan::findRoute(int numColleges)
 ////{
