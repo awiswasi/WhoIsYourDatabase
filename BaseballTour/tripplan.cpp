@@ -5,6 +5,8 @@
 #include <QDialog>
 #include "ballparkdb.h"
 #include "triptake.h"
+#include <map>
+#include <algorithm>
 
 QString scrapStadium(QString str)
 {
@@ -36,9 +38,14 @@ QString scrapStadium(QString str)
 
 void TripPlan::on_button_AutomaticTrip_clicked()
 {
+    if(ui->dropdown_CollegeList->currentIndex() == 0)
+    {
+        return;
+    }
+
     this->close();
 
-    plannedStadiums = sortStadiums("",allStadiums);
+    plannedStadiums = sortStadiums(scrapStadium(ui->dropdown_CollegeList->currentText()),allStadiums);
     vector<StadiumInfo> concatStadiums(plannedStadiums.begin(),plannedStadiums.begin() + ui->spin_numColleges->value());
 
     TripTake * trip = new TripTake(concatStadiums, this);
@@ -95,146 +102,143 @@ TripPlan::TripPlan(QWidget *parent) :
     conn.connClose();
 }
 
+int minimumDist(int dist[], bool Tset[], int max)
+{
+    int min=INT_MAX,index;
+
+    for(int i=0;i<max;i++)
+    {
+        if(Tset[i]==false && dist[i]<=min)
+        {
+            min=dist[i];
+            index=i;
+        }
+    }
+    return index;
+}
+
+bool sortByVal(const pair<int, int> &a,
+               const pair<int, int> &b)
+{
+    return (a.second < b.second);
+}
+
 std::vector<StadiumInfo> TripPlan::sortStadiums(QString startingStadium, std::vector<StadiumInfo> unsortedStadiums)
 {
-    return unsortedStadiums;
+    BallparkDB conn;
+    QString queryString;
+    conn.connOpen();
+    QSqlQuery qry(conn.mydb);
+
+    const int NUM_TEAMS = unsortedStadiums.size();
+
+    int  dist[NUM_TEAMS];
+    bool Tset[NUM_TEAMS];
+
+    int graph[NUM_TEAMS][NUM_TEAMS];
+
+    int start;
+
+    for(int i = 0; i < NUM_TEAMS; i++)
+    {
+        dist[i] = INT_MAX;
+        Tset[i] = false;
+
+        for(int j = 0; j < NUM_TEAMS; j++)
+        {
+            if(i == j)
+            {
+                graph[i][j] = 0;
+            }
+            else
+            {
+                graph[i][j] = 0;
+            }
+        }
+    }
+
+    for (int i = 0; i < NUM_TEAMS; i++)
+    {
+        if (unsortedStadiums[i].teamName == startingStadium)
+        {
+            start = i;
+            dist[start] = 0;
+        }
+        queryString = QString("select destinationStadium, distance from _DISTANCES "
+                        "where originatedStadium = \"") + QString(unsortedStadiums[i].stadiumName) + QString("\"");
+
+        qry.prepare(queryString);
+        if(qry.exec())
+        {
+            while(qry.next())
+            {
+                QString qry0 = qry.value(0).toString();
+                int qry1 = qry.value(1).toInt();
+
+                for(int j = 0; j < NUM_TEAMS; j++)
+                {
+                    if (unsortedStadiums[j].stadiumName == qry0)
+                    {
+                        graph[i][j] = qry1;
+                        graph[j][i] = qry1;
+                        qDebug() << "!!!! " << qry1;
+                    }
+                }
+            }
+        }
+        else
+        {
+            qDebug() << "ERROR IN sortStadiums() #1";
+            qDebug() << qry.lastError();
+            qDebug() << qry.lastQuery();
+        }
+
+    }
+
+    for(int i = 0; i < NUM_TEAMS; i++)
+    {
+        QString pp = "[";
+        for(int j = 0; j < NUM_TEAMS; j++)
+        {
+            pp = pp + QString::number(graph[i][j]) + QString("] [");
+        }
+        qDebug() << pp;
+    }
+
+    conn.connClose();
+
+    for (int i = 0; i < NUM_TEAMS; i++)
+    {
+        int m = minimumDist(dist,Tset,NUM_TEAMS);
+        Tset[m] = true;
+        for(int i = 0; i < NUM_TEAMS; i++)
+        {
+            if(!Tset[i] && graph[m][i] && dist[m]!=INT_MAX && dist[m]+graph[m][i]<dist[i])
+            {
+                dist[i]=dist[m]+graph[m][i];
+            }
+        }
+    }
+
+    std::vector<std::pair<int,int>> vec;
+
+    for(int i = 0; i<NUM_TEAMS; i++)
+    {
+        vec.push_back(make_pair(i,dist[i]));
+    }
+
+    sort(vec.begin(),vec.end(),sortByVal);
+
+    vector<StadiumInfo> sortedStadiums;
+
+    for(int i = 0; i < NUM_TEAMS; i++)
+    {
+        qDebug() << unsortedStadiums[vec[i].first].stadiumName << QString::number(vec[i].second);
+
+        sortedStadiums.push_back(unsortedStadiums[vec[i].first]);
+    }
+
+    return sortedStadiums;
 }
 
-    //plannedColleges(database)
-//{
-    //setWindowFlag(Qt::WindowContextHelpButtonHint,false);
-    //ui->setupUi(this);
-
-    //set spinbox range
-    //ui->spin_numColleges->QSpinBox::setMaximum(database.size());
-    //ui->spin_numColleges->QSpinBox::setValue(database.size());
-
-    //populate dropdown list
-    //ui->dropdown_CollegeList->addItem("Select a school...");
-    //for(unsigned long long int i = 0; i < database.size(); i++)
-    //{
-        //ui->dropdown_CollegeList->addItem(QString::fromStdString(plannedColleges.at(i).getName()));
-    //}
-
-    //populate second dropdown list
-    //ui->dropdown_CollegeList_2->addItem("Select a school...");
-    //for(unsigned long long int i = 0; i < database.size(); i++)
-    //{
-    //    ui->dropdown_CollegeList_2->addItem(QString::fromStdString(plannedColleges.at(i).getName()));
-    //}
-
-    //ui->dropdown_CollegeList->setCurrentIndex(PREV_HOME);
-    //ui->dropdown_CollegeList_2->setCurrentIndex(PREV_HOME);
-
-//}
-
-TripPlan::~TripPlan()
-{
-    delete ui;
-}
-
-//std::vector<College> TripPlan::sortColleges(int startingCollege, std::vector<College> collegesLeft, std::vector<College> collegesDone = {}, std::vector<int> doneIndexes = {})
-//{
-//    qDebug("Function called");
-
-//    int nextCollege = 0;
-//    double smallestNext = 999999999;
-//    bool found;
-//    int j;
-
-//    if(collegesDone.size() == collegesLeft.size())
-//    {
-//        for (College i : collegesDone)
-//        {
-//            qDebug() << i.getName().c_str();
-//        }
-
-//        return collegesDone;
-//    }
-//    else
-//    {
-//        collegesDone.push_back(collegesLeft[startingCollege]);
-//        doneIndexes.push_back(startingCollege);
-
-//        for(int i = 0; i < int(collegesLeft.size() - 1); i++)
-//        {
-//            if(smallestNext > collegesLeft[startingCollege].getDistances(i).distanceBetween)
-//            {
-//                found = false;
-//                j = 0;
-
-//                while(!found && j < int(collegesLeft.size()))
-//                {
-//                    if(collegesLeft[j].getName() == collegesLeft[startingCollege].getDistances(i).endingCollege)
-//                    {
-//                        found = true;
-//                        qDebug() << collegesLeft[startingCollege].getDistances(i).endingCollege.c_str();
-//                    }
-//                    else
-//                    {
-//                        j++;
-//                    }
-//                }
-
-//                if(!std::count(doneIndexes.begin(), doneIndexes.end(), j))
-//                {
-//                    smallestNext = collegesLeft[startingCollege].getDistances(i).distanceBetween;
-//                    qDebug() << "               MY ASSIGNMENT" << smallestNext;
-//                    if(collegesDone[collegesDone.size()-1].distanceTraveled > smallestNext && smallestNext != 0 || collegesDone[collegesDone.size()-1].distanceTraveled==0)
-//                        collegesDone[collegesDone.size()-1].distanceTraveled = smallestNext;
-//                    nextCollege = j;
-//                }
-//            }
-//        }
-//    }
-//    qDebug() << "                 CALLED HERE  " << smallestNext;
-//    return sortColleges(nextCollege,collegesLeft,collegesDone,doneIndexes);
-//}
-
-//std::vector<College> TripPlan::findRoute(int numColleges)
-//{
-//    vector<College> returnVec = sortColleges(ui->dropdown_CollegeList->currentIndex() - 1, plannedColleges);
-
-//    while(int(returnVec.size()) > numColleges)
-//    {
-//        returnVec.pop_back();
-//    }
-
-//    return returnVec;
-//}
-
-//void TripPlan::on_takeTripButton_clicked()
-//{
-//    this->close();
-////    qDebug() << plannedColleges[ui->dropdown_CollegeList->currentIndex() - 1].getName().c_str();
-//    TripTake triptake(plannedColleges);
-//    triptake.exec();
-//}
-
-
-//void TripPlan::on_button_AutomaticTrip_clicked()
-//{
-//    if(ui->dropdown_CollegeList->currentIndex() == 0)
-//        return;
-
-//    this->close();
-
-//    for (College i : plannedColleges)
-//    {
-//        qDebug() << i.getName().c_str();
-//    }
-
-//    TripTake triptake(findRoute(ui->spin_numColleges->value()));
-//    triptake.exec();
-//}
-
-
-//void TripPlan::on_button_CustomTrip_clicked()
-//{
-//    this->close();
-//    if(ui->dropdown_CollegeList_2->currentIndex() == 0)
-//        return;
-
-//    CustomTrip customtrip(plannedColleges,ui->dropdown_CollegeList_2->currentIndex());
-//    customtrip.exec();
-//}
+TripPlan::~TripPlan(){delete ui;}

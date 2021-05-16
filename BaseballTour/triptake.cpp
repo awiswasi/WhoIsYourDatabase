@@ -10,7 +10,7 @@ TripTake::TripTake(std::vector<StadiumInfo> INPUTSTADIUMS, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    on_pushButton_clicked();
+    on_push_next_clicked();
 }
 
 TripTake::~TripTake()
@@ -18,13 +18,36 @@ TripTake::~TripTake()
     delete ui;
 }
 
-void TripTake::on_pushButton_clicked()
+void TripTake::on_push_next_clicked()
 {
-    ui->label->setText(stadiums[currentStadium++].teamName);
+    BallparkDB conn;
+    conn.connOpen();
+
+    QString selectStatement = QString("select * from\"") + QString(stadiums[currentStadium].teamName) + QString("\"");
+    QSqlQueryModel * modal = new QSqlQueryModel();
+    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+
+    qry->prepare(QString(selectStatement));
+
+    if(!qry->exec()){
+        qDebug() << qry->lastQuery();
+        qDebug() << qry->lastError();}
+
+    modal->setQuery(*qry);
+
+    ui->label_team->setText(stadiums[currentStadium].teamName);
+    ui->label_stadium->setText(stadiums[currentStadium].stadiumName);
+    ui->label_stadium->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+    ui->tableView->setModel(modal);
+    ui->tableView->resizeColumnsToContents();
+
+    currentStadium++;
 
     if(currentStadium >= int(stadiums.size()))
     {
-        ui->pushButton->hide();
+        ui->push_next->hide();
     }
+
+    conn.connClose();
 }
 

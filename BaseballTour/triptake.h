@@ -18,7 +18,7 @@ public:
     ~TripTake();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_push_next_clicked();
 
 private:
     std::vector<StadiumInfo> stadiums;
