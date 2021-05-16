@@ -57,7 +57,9 @@ void addsouvenir::on_addSouvenirButton_clicked()
     update.prepare(changes);
 
     if(update.exec()){
-        qDebug()<<"Added " + souvenirName;
+        QMessageBox msgBox;
+        msgBox.setText("Added " + souvenirName);
+        msgBox.exec();
     }else{
         qDebug()<<"Something went wrong";
         qDebug()<<"ERROR! " << update.lastError();

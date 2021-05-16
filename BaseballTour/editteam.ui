@@ -253,7 +253,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Save Changes</string>
+    <string>Add Team</string>
    </property>
   </widget>
   <widget class="QPushButton" name="CancelButton">

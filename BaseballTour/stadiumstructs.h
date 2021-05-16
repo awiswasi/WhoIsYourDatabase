@@ -15,6 +15,7 @@ struct StadiumInfo
     QString    roofType;
     int        distanceToCenter;
     QString    location;
+    int        distanceNeeded;
 };
 
 
@@ -36,6 +37,7 @@ struct DistanceInfo
     QString startStad;
     QString endStad;
     int distance;
+
 };
 
 struct TeamSouvenirs
