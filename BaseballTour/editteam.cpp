@@ -71,3 +71,19 @@ void editTeam::on_CancelButton_clicked()
 {
     this->close();
 }
+
+void editTeam::on_expansionButton_clicked()
+{
+    ui->lineEdit_teamname->setText("Las Vegas Gamblers");
+    ui->lineEdit_stadiumname->setText("Las Vegas Stadium");
+    ui->lineEdit_seatingcapacity->setText("44,444");
+    ui->lineEdit_location->setText("Las Vegas, Nevada");
+    ui->lineEdit_playingsurface->setText("Grass");
+    ui->lineEdit_league->setText("National");
+    ui->lineEdit_dateopened->setText("2022");
+    ui->lineEdit_distancetocenter->setText("400");
+    ui->lineEdit_ballparktypology->setText("Retro Modern");
+    ui->lineEdit_rooftype->setText("Open");
+
+    on_SaveButton_clicked();
+}

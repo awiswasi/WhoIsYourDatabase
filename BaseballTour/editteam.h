@@ -20,6 +20,8 @@ private slots:
 
     void on_CancelButton_clicked();
 
+    void on_expansionButton_clicked();
+
 private:
     Ui::editTeam *ui;
 };
