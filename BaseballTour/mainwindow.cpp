@@ -48,20 +48,19 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->tableView->setModel(modal);
     ui->combo_team->setModel(modal);
-
+    int row = 0;
+    while(qry->next () == true)
+    {
+        row++;
+    }
     int total = 0;
     QString str;
-    for(int i = 0; i < 30; i++)
+    for(int i = 0; i < row + 1; i++)
     {
         total += modal->record(i).value(2).toInt();
     }
     str = QString::number(total);
-    qDebug() << total;
-    //QString str = total.toString();
-   // QString str = modal->record(0).value(2).toString();
     ui->capacityLabel->setText(str);
-
-    //ui->capacityLabel->setText("");
 
     conn.connClose();
 
@@ -481,10 +480,10 @@ void MainWindow::on_Open_Roof_Button_clicked()
 
     int openRoofTotal = 0;
     QString openRoofStr;
-    for(int i = 0; i < 23; i++)
-    {
-        openRoofTotal = i + 1;
-    }
+
+    while(qry->next () == true) {
+        openRoofTotal++;
+      }
     openRoofStr = QString::number(openRoofTotal);
     ui->openRoofLabel->setText(openRoofStr);
 
