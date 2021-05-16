@@ -1,34 +1,32 @@
-//#ifndef TRIPPLAN_H
-//#define TRIPPLAN_H
+#ifndef TRIPPLAN_H
+#define TRIPPLAN_H
 
-//#include <QDialog>
-//#include <QDebug>
-////#include "dataBase.h"
+#include <QDialog>
+#include <QDebug>
+#include "stadiumstructs.h"
 
-//namespace Ui {
-//class TripPlan;
-//}
+namespace Ui {
+class TripPlan;
+}
 
-//class TripPlan : public QDialog
-//{
-//    Q_OBJECT
+class TripPlan : public QDialog
+{
+    Q_OBJECT
 
-//public:
-//    explicit TripPlan(QWidget *parent = nullptr);
-//    ~TripPlan();
+public:
+    explicit TripPlan(QWidget *parent = nullptr);
+    ~TripPlan();
 
-//private slots:
-////    void on_takeTripButton_clicked();
+private slots:
 
-////    void on_button_AutomaticTrip_clicked();
+    void on_button_AutomaticTrip_clicked();
 
-////    void on_button_CustomTrip_clicked();
+    void on_button_CustomTrip_clicked();
 
-//private:
-//    Ui::TripPlan *ui;
-////    std::vector<College> plannedColleges;
-////    std::vector<College> sortColleges(int startingCollege, std::vector<College> collegesLeft, std::vector<College> collegesDone, std::vector<int> doneIndexes);
-////    std::vector<College> findRoute(int numColleges);
-//};
+private:
+    Ui::TripPlan *ui;
+    std::vector<StadiumInfo> plannedStadiums;
+    std::vector<StadiumInfo> sortStadiums(QString startingStadium, std::vector<StadiumInfo> unsortedStadiums);
+};
 
-//#endif // TRIPPLAN_H
+#endif // TRIPPLAN_H

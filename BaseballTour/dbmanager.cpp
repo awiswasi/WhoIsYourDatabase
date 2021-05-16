@@ -41,8 +41,7 @@ QVector<StadiumInfo> dbManager:: getStadiumInfo()
             myStructInfo.location = query.value(3).toString();
             myStructInfo.surface = query.value(4).toString();
             myStructInfo.leagueType = query.value(5).toString();
-            dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
-            myStructInfo.dateOpen = dateTime1;
+            myStructInfo.dateOpen = query.value(6).toInt();
             myStructInfo.distanceToCenter = query.value(7).toInt();
             myStructInfo.typology = query.value(8).toString();
             myStructInfo.roofType = query.value(9).toString();
@@ -80,8 +79,7 @@ QVector<StadiumInfo> dbManager:: sortedByCapacity()
             myStructInfo.location = query.value(3).toString();
             myStructInfo.surface = query.value(4).toString();
             myStructInfo.leagueType = query.value(5).toString();
-            dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
-            myStructInfo.dateOpen = dateTime1;
+            myStructInfo.dateOpen = query.value(6).toInt();
             myStructInfo.distanceToCenter = query.value(7).toInt();
             myStructInfo.typology = query.value(8).toString();
             myStructInfo.roofType = query.value(9).toString();
@@ -164,8 +162,7 @@ QVector<StadiumInfo> dbManager:: sortedByTeamStadium(QString name)
                 myStructInfo.location = query.value(3).toString();
                 myStructInfo.surface = query.value(4).toString();
                 myStructInfo.leagueType = query.value(5).toString();
-                dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
-                myStructInfo.dateOpen = dateTime1;
+                myStructInfo.dateOpen = query.value(6).toInt();
                 myStructInfo.distanceToCenter = query.value(7).toInt();
                 myStructInfo.typology = query.value(8).toString();
                 myStructInfo.roofType = query.value(9).toString();
@@ -203,8 +200,7 @@ QVector<StadiumInfo> dbManager:: sortedStadiumTypology()
             myStructInfo.location = query.value(3).toString();
             myStructInfo.surface = query.value(4).toString();
             myStructInfo.leagueType = query.value(5).toString();
-            dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
-            myStructInfo.dateOpen = dateTime1;
+            myStructInfo.dateOpen = query.value(6).toInt();
             myStructInfo.distanceToCenter = query.value(7).toInt();
             myStructInfo.typology = query.value(8).toString();
             myStructInfo.roofType = query.value(9).toString();
@@ -244,12 +240,10 @@ QVector<StadiumInfo> dbManager:: surfaceSorted()
             myStructInfo.location = query.value(3).toString();
             myStructInfo.surface = query.value(4).toString();
             myStructInfo.leagueType = query.value(5).toString();
-            dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
-            myStructInfo.dateOpen = dateTime1;
+            myStructInfo.dateOpen = query.value(6).toInt();
             myStructInfo.distanceToCenter = query.value(7).toInt();
             myStructInfo.typology = query.value(8).toString();
             myStructInfo.roofType = query.value(9).toString();
-            surfaceVector.push_back(myStructInfo);
         }
     }
     else
@@ -283,8 +277,7 @@ QVector<StadiumInfo> dbManager:: sortedChronologicalOrder()
             myStructInfo.location = query.value(3).toString();
             myStructInfo.surface = query.value(4).toString();
             myStructInfo.leagueType = query.value(5).toString();
-            dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
-            myStructInfo.dateOpen = dateTime1;
+            myStructInfo.dateOpen = query.value(6).toInt();
             myStructInfo.distanceToCenter = query.value(7).toInt();
             myStructInfo.typology = query.value(8).toString();
             myStructInfo.roofType = query.value(9).toString();
@@ -593,7 +586,7 @@ bool dbManager::addTeam(StadiumInfo myStadiumInfo, QVector<DistanceInfo>tempDist
 
                    +myStadiumInfo.teamName+ "', '" +myStadiumInfo.stadiumName+ "', '" +QString::number(myStadiumInfo.capacity)+ "', '" +myStadiumInfo.location+ "', '"
 
-                   +myStadiumInfo.surface+ "', '" +myStadiumInfo.leagueType+ "', '" +myStadiumInfo.dateOpen.toString(format)+ "', '" +QString::number(myStadiumInfo.distanceToCenter)+ "', '"
+                   +myStadiumInfo.surface+ "', '" +myStadiumInfo.leagueType+ "', '" +QString::number(myStadiumInfo.dateOpen)+ "', '" +QString::number(myStadiumInfo.distanceToCenter)+ "', '"
 
                    +myStadiumInfo.typology+ "', '" + myStadiumInfo.roofType+ "')");
 
@@ -776,8 +769,7 @@ QVector<StadiumInfo> dbManager::getInfo(QString teamName)
            myStructInfo.location = query.value(3).toString();
            myStructInfo.surface = query.value(4).toString();
            myStructInfo.leagueType = query.value(5).toString();
-           dateTime1 = QDateTime::fromString(query.value(6).toString(), format);
-           myStructInfo.dateOpen = dateTime1;
+           myStructInfo.dateOpen = query.value(6).toInt();
            myStructInfo.distanceToCenter = query.value(7).toInt();
            myStructInfo.typology = query.value(8).toString();
            myStructInfo.roofType = query.value(9).toString();

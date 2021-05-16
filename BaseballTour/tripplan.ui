@@ -26,7 +26,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Peek all colleges</string>
+    <string>Peek all stadiums</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="spin_numColleges">
@@ -98,7 +98,7 @@
     </font>
    </property>
    <property name="text">
-    <string>colleges starting at</string>
+    <string>stadiums starting at</string>
    </property>
   </widget>
   <widget class="QComboBox" name="dropdown_CollegeList">
@@ -144,7 +144,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Plan a custom trip by selecting colleges starting at</string>
+    <string>Plan a custom trip by selecting stadiums starting at</string>
    </property>
   </widget>
   <widget class="QComboBox" name="dropdown_CollegeList_2">
@@ -190,7 +190,7 @@
     </font>
    </property>
    <property name="text">
-    <string>I'd like to pick which colleges I visit:</string>
+    <string>I'd like to pick which stadiums  I visit:</string>
    </property>
   </widget>
  </widget>

@@ -20,6 +20,7 @@
 #include <QTableWidget>
 #include <iostream>
 #include "editteam.h"
+#include "tripplan.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -673,7 +674,7 @@ void MainWindow::on_editButton_clicked()
 
 void MainWindow::on_push_plan_clicked()
 {
-    planTrip = new planyourtrip(this);
+    planTrip = new TripPlan(this);
     planTrip->show();
 }
 

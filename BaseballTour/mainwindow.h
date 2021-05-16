@@ -21,6 +21,7 @@
 #include <QSqlQueryModel>
 #include "addsouvenir.h"
 #include "planyourtrip.h"
+#include "tripplan.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -319,7 +320,7 @@ private:
         QVector<QString> visited;
         QVector<int> selectInd;
         QVector<QVector<CurrLocal>> selectDist;
-        planyourtrip *planTrip;
+        TripPlan *planTrip;
 
 
     public:
