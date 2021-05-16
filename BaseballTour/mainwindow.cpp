@@ -49,6 +49,19 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->tableView->setModel(modal);
     ui->combo_team->setModel(modal);
+    int row = 0;
+    while(qry->next () == true)
+    {
+        row++;
+    }
+    int total = 0;
+    QString str;
+    for(int i = 0; i < row + 1; i++)
+    {
+        total += modal->record(i).value(2).toInt();
+    }
+    str = QString::number(total);
+    ui->capacityLabel->setText(str);
 
     conn.connClose();
 
@@ -414,8 +427,8 @@ void MainWindow::on_Ami_League_Button_clicked()
     QSqlQueryModel * modal = new QSqlQueryModel();
     conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
-    qry->prepare("select * from _MLBinfo where league = 'American'order by stadiumName");;
-
+    qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from _MLBinfo where league = 'American' order by teamName ASC");
+   //A qry->prepare("select * from _MLBinfo order by teamName");
     qry->exec();
     modal->setQuery(*qry);
     QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
@@ -436,7 +449,8 @@ void MainWindow::on_Nat_Leagu_Button_clicked()
     conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
 
-    qry->prepare("select * from _MLBinfo where league = 'National' order by stadiumName");
+     qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from _MLBinfo where league = 'National' order by stadiumName ASC");
+    //qry->prepare("select * from _MLBinfo order by stadiumName");
   //  qry->prepare("select * from _MLBinfo where league = 'National' order by teamName");
     qry->exec();
     modal->setQuery(*qry);
@@ -464,13 +478,16 @@ void MainWindow::on_Open_Roof_Button_clicked()
 
     qry->prepare("select * from _MLBinfo where roofType = 'Open'");
     qry->exec();
-    int i = 0;
-    if(qry->isActive())
-        while(qry->next())
-            i++;
 
-    data = i;
-     ui->label_2->setText(data);
+    int openRoofTotal = 0;
+    QString openRoofStr;
+
+    while(qry->next () == true) {
+        openRoofTotal++;
+      }
+    openRoofStr = QString::number(openRoofTotal);
+    ui->openRoofLabel->setText(openRoofStr);
+
     modal->setQuery(*qry);
     QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
     m->setSourceModel(modal);
@@ -676,5 +693,37 @@ void MainWindow::on_push_plan_clicked()
 {
     planTrip = new TripPlan(this);
     planTrip->show();
+}
+
+
+void MainWindow::on_showGreatest_clicked()
+{
+    BallparkDB conn;
+    QSqlQueryModel * modal = new QSqlQueryModel();
+    conn.connOpen();
+    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+
+    qry->prepare("select * from _MLBinfo order by distanceToCenter DESC limit 2");
+
+    qry->exec();
+    modal->setQuery(*qry);
+    ui->tableView->setModel(modal);
+    conn.connClose();
+}
+
+
+void MainWindow::on_showSmallest_clicked()
+{
+    BallparkDB conn;
+    QSqlQueryModel * modal = new QSqlQueryModel();
+    conn.connOpen();
+    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+
+    qry->prepare("select * from _MLBinfo order by distanceToCenter ASC limit 2");
+
+    qry->exec();
+    modal->setQuery(*qry);
+    ui->tableView->setModel(modal);
+    conn.connClose();
 }
 

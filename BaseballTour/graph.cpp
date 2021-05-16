@@ -29,7 +29,7 @@ Graph::Graph(QString starting)
     QString start = starting;
 
     QVector<StadiumInfo> temp = db.sortedByTeamStadium("Stadium");
-
+    //qDebug("Function called");
     for(int i = 0; i < temp.size(); i++)
     {
         if(temp.at(i).stadiumName != start)
