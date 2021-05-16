@@ -427,8 +427,8 @@ void MainWindow::on_Ami_League_Button_clicked()
     QSqlQueryModel * modal = new QSqlQueryModel();
     conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
-    qry->prepare("select * from _MLBinfo where league = 'American'order by stadiumName");;
-
+    qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from _MLBinfo where league = 'American' order by teamName ASC");
+   //A qry->prepare("select * from _MLBinfo order by teamName");
     qry->exec();
     modal->setQuery(*qry);
     QSortFilterProxyModel *m = new QSortFilterProxyModel(this);
@@ -449,7 +449,8 @@ void MainWindow::on_Nat_Leagu_Button_clicked()
     conn.connOpen();
     QSqlQuery * qry = new QSqlQuery(conn.mydb);
 
-    qry->prepare("select * from _MLBinfo where league = 'National' order by stadiumName");
+     qry->prepare("select teamName, stadiumName, seatingCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType from _MLBinfo where league = 'National' order by stadiumName ASC");
+    //qry->prepare("select * from _MLBinfo order by stadiumName");
   //  qry->prepare("select * from _MLBinfo where league = 'National' order by teamName");
     qry->exec();
     modal->setQuery(*qry);
