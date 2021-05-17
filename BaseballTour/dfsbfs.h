@@ -7,7 +7,7 @@
 #include <vector>
 #include <map>
 #include <iostream>
-
+#include "stadiumstructs.h"
 #include <iomanip>
 #include <QString>
 #include <map>
@@ -22,6 +22,8 @@
 #include <queue>
 #include <deque>
 #include <functional>
+#include <bits/stdc++.h>
+
 using namespace std;
 
 using namespace std;
@@ -38,11 +40,13 @@ public:
     explicit dfsbfs(QWidget *parent = nullptr);
     ~dfsbfs();
 
-
+    void BFS(int start);
     struct vertex;
     struct visited;
     typedef pair<int, vertex*> ve;
 
+    typedef map<string, vertex *> vmap;
+    vmap work;
     struct visited
     {
         QString name;
@@ -54,12 +58,20 @@ public:
         vertex(QString s) : name(s) {}
     };
 
-        typedef map<string, vertex *> vmap;
-        vmap work;
+
         void addvertex(const QString&);
         void addedge(const QString& from, const QString& to, double dist);
         void DFS(vector<QString> titles, vector<int> edges, QString start);
-        void BFS(vector<QString> titles, vector<int> edges, QString start);
+
+        void BFS(int start, std::vector<StadiumInfo> unsortedStadiums);
+
+        std::vector<StadiumInfo> allStadiums;
+        std::vector<StadiumInfo> plannedStadiums;
+        std::vector<StadiumInfo> sortStadiums(QString startingStadium, std::vector<StadiumInfo> unsortedStadiums);
+
+
+private slots:
+        void on_pushButton_clicked();
 
 private:
     Ui::dfsbfs *ui;

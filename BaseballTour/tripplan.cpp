@@ -203,6 +203,7 @@ std::vector<StadiumInfo> TripPlan::sortStadiums(QString startingStadium, std::ve
 
     }
 
+
     for(int i = 0; i < NUM_TEAMS; i++)
     {
         QString pp = "[";
@@ -210,7 +211,7 @@ std::vector<StadiumInfo> TripPlan::sortStadiums(QString startingStadium, std::ve
         {
             pp = pp + QString::number(graph[i][j]) + QString("] [");
         }
-        qDebug() << pp;
+        qDebug() << pp;                                                         // outputting graph
     }
 
     conn.connClose();
