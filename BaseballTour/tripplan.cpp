@@ -46,7 +46,8 @@ void TripPlan::on_button_AutomaticTrip_clicked()
     this->close();
 
     plannedStadiums = sortStadiums(scrapStadium(ui->dropdown_CollegeList->currentText()),allStadiums);
-    vector<StadiumInfo> concatStadiums(plannedStadiums.begin(),plannedStadiums.begin() + ui->spin_numColleges->value());
+//    vector<StadiumInfo> concatStadiums(plannedStadiums.begin(),plannedStadiums.begin() + ui->spin_numColleges->value());
+    vector<StadiumInfo> concatStadiums(plannedStadiums.begin(),plannedStadiums.begin() + endIndex);
 
     TripTake * trip = new TripTake(concatStadiums, this);
     trip->exec();
@@ -74,6 +75,7 @@ TripPlan::TripPlan(QWidget *parent) :
 
     ui->dropdown_CollegeList->addItem("Select a team...");
     ui->dropdown_CollegeList_2->addItem("Select a team...");
+    ui->dropdown_endStadium->addItem("Select a team...");
 
     int count = 0;
 
@@ -93,6 +95,8 @@ TripPlan::TripPlan(QWidget *parent) :
 
         ui->dropdown_CollegeList->addItem(qry->value(0).toString() + " (" + qry->value(1).toString() + ")");
         ui->dropdown_CollegeList_2->addItem(qry->value(0).toString() + " (" + qry->value(1).toString() + ")");
+        ui->dropdown_endStadium->addItem(qry->value(0).toString() + " (" + qry->value(1).toString() + ")");
+
         count++;
     }
 
@@ -239,7 +243,13 @@ std::vector<StadiumInfo> TripPlan::sortStadiums(QString startingStadium, std::ve
         tempTeam = unsortedStadiums[vec[i].first];
         tempTeam.distanceNeeded = vec[i].second;
         sortedStadiums.push_back(tempTeam);
+
+        if(tempTeam.teamName == scrapStadium(ui->dropdown_endStadium->currentText()))
+            endIndex = i + 1;
     }
+    if(ui->dropdown_endStadium->currentText()=="Select a team...")
+        endIndex = ui->spin_numColleges->value();
+    qDebug() << endIndex;
 
     return sortedStadiums;
 }

@@ -25,7 +25,7 @@ private slots:
 
 private:
     Ui::TripPlan *ui;
-
+    int endIndex=0;
     std::vector<StadiumInfo> allStadiums;
     std::vector<StadiumInfo> plannedStadiums;
     std::vector<StadiumInfo> sortStadiums(QString startingStadium, std::vector<StadiumInfo> unsortedStadiums);

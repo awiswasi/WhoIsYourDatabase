@@ -193,6 +193,39 @@
     <string>I'd like to pick which stadiums  I visit:</string>
    </property>
   </widget>
+  <widget class="QComboBox" name="dropdown_endStadium">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>100</y>
+     <width>351</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_planTrip2_2">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>100</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Ending stadium:</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
