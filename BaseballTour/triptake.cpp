@@ -35,6 +35,8 @@ void TripTake::on_push_next_clicked()
             ui->buyButton->setVisible(false);
             ui->push_next->setVisible(false);
             ui->comboBox->setVisible(false);
+            ui->pushButton->setVisible(false);
+
             ui->quantitySpinBox->setVisible(false);
             ui->label_team->setText("Trip Summary");
             ui->label_stadium->setText("");
