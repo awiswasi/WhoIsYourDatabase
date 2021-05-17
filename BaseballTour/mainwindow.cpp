@@ -606,8 +606,8 @@ void MainWindow::on_push_souvenirs_clicked()
 
     QString arg1 = ui->combo_team->currentText();
     qDebug() << arg1;
-    QString test = "Hi";
-    qDebug() << test;
+    //QString test = "Hi";
+    //qDebug() << test;
     if (arg1 == "")
         return;
 
