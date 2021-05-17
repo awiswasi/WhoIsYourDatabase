@@ -6,10 +6,16 @@
 #include <QDebug>
 #include <QFileInfo>
 
+
 namespace Ui {
 class addsouvenir;
 }
 
+/*!
+ * \brief The addsouvenir class: dialog for adding souvenirs
+ *
+ * tt
+ */
 class addsouvenir : public QDialog
 {
     Q_OBJECT

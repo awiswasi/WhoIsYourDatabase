@@ -11,6 +11,11 @@ namespace Ui {
 class BallparkDB;
 }
 
+/*!
+ * \brief The addsouvenir class: dialog for adding souvenirs
+ *
+ * tt
+ */
 class BallparkDB : public QMainWindow
 {
     Q_OBJECT

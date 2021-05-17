@@ -31,6 +31,7 @@ namespace Ui {
 class dfsbfs;
 }
 
+/// dfsbfs: contains DFS and BFS algorithms
 class dfsbfs : public QDialog
 {
     Q_OBJECT

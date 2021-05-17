@@ -8,6 +8,11 @@ namespace Ui {
 class planyourtrip;
 }
 
+/*!
+ * \brief <I>(not needed, old reference code)</I>
+ *
+ * tt
+ */
 class planyourtrip : public QDialog
 {
     Q_OBJECT

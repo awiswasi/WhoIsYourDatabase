@@ -15,15 +15,6 @@
 #include <QVector>
 #include <qvector.h>
 
-/*!
-   * \file dbmanager.h
-   * \brief  Header for database wrapper class
-   *
-   * This file contains all of the declarations of the dbmanager class
-   */
-
-
-
 
 /*!
  * \brief The dbManager class

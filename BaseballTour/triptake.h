@@ -8,7 +8,11 @@
 namespace Ui {
 class TripTake;
 }
-
+/*!
+ * \brief The TripTake class: used to buy souvenirs along path
+ *
+ * tt
+ */
 class TripTake : public QDialog
 {
     Q_OBJECT

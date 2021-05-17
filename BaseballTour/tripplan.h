@@ -9,6 +9,11 @@ namespace Ui {
 class TripPlan;
 }
 
+/*!
+ * \brief Dialog for choosing trip to take (before other dialogs)
+ *
+ * tt
+ */
 class TripPlan : public QDialog
 {
     Q_OBJECT

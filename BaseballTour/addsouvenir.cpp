@@ -9,7 +9,6 @@
 #include <QSqlDatabase>
 #include "ballparkdb.h"
 
-
 addsouvenir::addsouvenir(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::addsouvenir)

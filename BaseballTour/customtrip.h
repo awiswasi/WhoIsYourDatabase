@@ -10,6 +10,11 @@ namespace Ui {
 class CustomTrip;
 }
 
+/*!
+ * \brief Dialog for for taking trips other than A->B trips
+ *
+ * tt
+ */
 class CustomTrip : public QDialog
 {
     Q_OBJECT
