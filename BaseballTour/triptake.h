@@ -20,6 +20,10 @@ public:
 private slots:
     void on_push_next_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_buyButton_clicked();
+
 private:
     std::vector<StadiumInfo> stadiums;
     Ui::TripTake *ui;

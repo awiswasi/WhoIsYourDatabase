@@ -16,6 +16,7 @@ struct StadiumInfo
     int        distanceToCenter;
     QString    location;
     int        distanceNeeded = 0;
+    double     totalSpent = 0;
 };
 
 

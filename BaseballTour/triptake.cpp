@@ -20,6 +20,7 @@ TripTake::~TripTake()
 
 void TripTake::on_push_next_clicked()
 {
+    ui->label->setText("Total Spent: ");
     BallparkDB conn;
     conn.connOpen();
 
@@ -42,6 +43,7 @@ void TripTake::on_push_next_clicked()
     ui->tableView->resizeColumnsToContents();
     ui->label_distance->setText(QString::number(stadiums[currentStadium].distanceNeeded));
 
+    ui->comboBox->setModel(modal);
     currentStadium++;
 
     if(currentStadium >= int(stadiums.size()))
@@ -50,5 +52,28 @@ void TripTake::on_push_next_clicked()
     }
 
     conn.connClose();
+
 }
 
+
+void TripTake::on_buyButton_clicked()
+{
+    BallparkDB conn;
+    conn.connOpen();
+
+    QSqlQuery query;
+
+    query.exec("select price from '" +stadiums[currentStadium-1].teamName + "' where souvenir = '" +ui->comboBox->currentText() + "'");
+    query.next();
+
+    double price = query.value(0).toDouble();
+
+    qDebug() << "Price = " << price;
+
+    stadiums[currentStadium-1].totalSpent += price * ui->quantitySpinBox->value();
+
+    ui->label->setText("Total Spent: " + QString::number(stadiums[currentStadium-1].totalSpent));
+
+    ui->quantitySpinBox->setValue(0);
+    conn.connClose();
+}

@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     ballparkdb.cpp \
+    customtrip.cpp \
     dbmanager.cpp \
     distancesdb.cpp \
     editteam.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
 
 HEADERS += \
     ballparkdb.h \
+    customtrip.h \
     dbmanager.h \
     distancesdb.h \
     editteam.h \
@@ -46,6 +48,7 @@ HEADERS += \
 
 FORMS += \
     addsouvenir.ui \
+    customtrip.ui \
     editteam.ui \
     logindialog.ui \
     mainwindow.ui \

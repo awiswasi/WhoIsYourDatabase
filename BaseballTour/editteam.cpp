@@ -140,5 +140,13 @@ void editTeam::on_expansionButton_clicked()
     update.bindValue(":stad2", LV);
     update.exec();
 
+    update.exec("CREATE TABLE 'Las Vegas Gamblers' ('souvenir'	STRING,'price'	INT)");
+
+    update.exec("INSERT INTO 'main'.'Las Vegas Gamblers' ('souvenir', 'price') VALUES ('Team Jersey', '199.99')");
+    update.exec("INSERT INTO 'main'.'Las Vegas Gamblers' ('souvenir', 'price') VALUES ('Autographed Baseball', '29.99')");
+    update.exec("INSERT INTO 'main'.'Las Vegas Gamblers' ('souvenir', 'price') VALUES ('Team Pennant', '17.99')");
+    update.exec("INSERT INTO 'main'.'Las Vegas Gamblers' ('souvenir', 'price') VALUES ('Baseball Bat', '89.39')");
+    update.exec("INSERT INTO 'main'.'Las Vegas Gamblers' ('souvenir', 'price') VALUES ('Baseball Cap', '19.99')");
+
     conn.connClose();
 }
