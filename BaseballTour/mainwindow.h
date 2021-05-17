@@ -8,7 +8,6 @@
 #include <QSortFilterProxyModel>
 #include <QString>
 #include <QApplication>
-#include <QtSql>
 #include <QMap>
 #include <QMessageBox>
 #include "dbmanager.h"
@@ -22,6 +21,7 @@
 #include "addsouvenir.h"
 #include "planyourtrip.h"
 #include "tripplan.h"
+#include "showmst.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -296,6 +296,8 @@ class MainWindow : public QMainWindow
 
             void on_showSmallest_clicked();
 
+            void on_showMSTButton_clicked();
+
 private:
         bool isAdmin;
         QString team;
@@ -325,6 +327,9 @@ private:
         QVector<int> selectInd;
         QVector<QVector<CurrLocal>> selectDist;
         TripPlan *planTrip;
+        showMST *mst;
+        std::vector<DistanceInfo> distances;
+
 
 
     public:

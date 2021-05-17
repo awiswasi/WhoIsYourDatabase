@@ -186,3 +186,73 @@ QVector<CurrLocal> Graph::Dijkstras()
     return shortestPaths;
 }
 
+// =======================================================================
+// DFS
+
+//int Graph::DFS(QString startingStadium, QVector<QString> &dfs)
+//{
+//// verticesVisited
+////    int numVisited = 0; // Number of vertices visited.
+
+////       // Iterator to the first vertex in the graph.
+////       QVector<Vertex>::iterator graphIt = graph.begin();
+
+////       // Counts the number of vertices in the graph that are marked as visited.
+////       while(graphIt != graph.end())
+////       {
+////           if(graphIt->visited)
+////           {
+////               numVisited++;
+////           }
+
+////           graphIt++;
+////       }
+
+////       return numVisited;
+
+
+//    if(verticesVisited() == graph.size())
+//    {
+//        for (int i=0; i<graph.size(); i++)
+//        {
+//            graph[i].visited = false;
+//            for (int j=0; j< graph.at(i).edgeList.size(); j++)
+//            {
+//                graph[i].edgeList[j].discoveryEdge = false;
+//            }
+//        }
+
+//        dfsDistance = 0;
+//        mstDistance = 0;
+//    }
+
+
+//    // Gets the graph index of the vertex being visited.
+//    int currVertex = findVertex(startingStadium);
+
+//    // Visits the vertex.
+//    graph[currVertex].visited = true;
+
+//    // Searches the vector of visited vertices for the stadium being visited.
+//    QVector<QString>::iterator nextStadiumIt = find(dfs.begin(), dfs.end(), startingStadium);
+
+//    // Adds the vertex to the vector if it is not already in the vector.
+//    if(nextStadiumIt == dfs.end())
+//    {
+//        dfs.push_back(startingStadium);
+//    }
+
+//    // Performs a recursive call on itself to visit all vertices in the graph.
+//    if(verticesVisited() != graph.size())
+//    {
+//        // Gets the graph index of the next closest stadium in the graph.
+//        int nextVertex = smallestEdgeDFS(currVertex, dfs);
+
+//        // Performs recursive call to visit the next closest stadium.
+//        DFS(graph.at(nextVertex).stadium, dfs);
+//    }
+
+//    return dfsDistance;
+//}
+
+

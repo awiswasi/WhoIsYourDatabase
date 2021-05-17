@@ -63,6 +63,33 @@ MainWindow::MainWindow(QWidget *parent)
     str = QString::number(total);
     ui->capacityLabel->setText(str);
 
+    // DISTANCES
+    // ==========================================================================================================
+    DistanceInfo tempdist;
+    DistanceInfo tempvert;
+
+
+    qry->prepare("select * from _DISTANCES");
+    qry->exec();
+
+    int count = 0;
+
+
+     // Reading in edges
+    while(qry->next()) //these seem to be coming out in alphabetical order by default
+    {
+        tempdist.startStad = qry->value(0).toString();
+        tempdist.endStad = qry->value(1).toString();
+        tempdist.distance = qry->value(2).toInt();
+        distances.push_back(tempdist);
+        count++;
+    }
+    // ADDING VERTEX
+    while(qry->next())
+    {
+        tempvert.startStad = qry->value(0).toString();
+    }
+
     conn.connClose();
 
     this->statusBar()->setSizeGripEnabled(false);
@@ -725,5 +752,12 @@ void MainWindow::on_showSmallest_clicked()
     modal->setQuery(*qry);
     ui->tableView->setModel(modal);
     conn.connClose();
+}
+//showMST *mst;
+
+void MainWindow::on_showMSTButton_clicked()
+{
+    mst = new showMST(this);
+    mst->show();
 }
 
