@@ -319,3 +319,14 @@ void CustomTrip::on_buttonBox_accepted()
 }
 
 
+
+void CustomTrip::on_pushButton_clicked()
+{
+    for (int i = 0; i < ui->listView->count(); i++)
+    {
+        ui->listView->item(i)->setCheckState(Qt::Checked);
+    }
+
+    on_buttonBox_accepted();
+}
+

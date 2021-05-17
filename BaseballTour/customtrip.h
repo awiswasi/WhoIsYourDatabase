@@ -21,6 +21,8 @@ public:
 private slots:
     void on_buttonBox_accepted();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::CustomTrip *ui;
 //    std::vector<StadiumInfo> sortStadiums(int startingStadium, std::vector<Stadium> StadiumsLeft, std::vector<Stadium> StadiumsDone, std::vector<int> doneIndexes);

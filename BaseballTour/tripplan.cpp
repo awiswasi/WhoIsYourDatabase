@@ -68,6 +68,7 @@ TripPlan::TripPlan(QWidget *parent) :
     ui(new Ui::TripPlan)
 {
     ui->setupUi(this);
+    ui->spin_numColleges->hide();
 
     StadiumInfo tempstad;
     BallparkDB conn;
