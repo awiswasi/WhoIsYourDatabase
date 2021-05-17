@@ -275,6 +275,8 @@ void showMST::on_pushButton_clicked()
     mstAlg.addEdge("Yankee Stadium", "Citizens Bank Park", 80);
     mstAlg.addEdge("Yankee Stadium", "Citi Field", 50);
 
+
+
     mstAlg.shortestPath("Angel Stadium");
     qDebug() << "---- The Minimum Spanning Tree (MST) ----" << Qt::endl << Qt::endl;
     mstAlg.mst("Angel Stadium");

@@ -79,121 +79,27 @@ void getGraph(QString startingStadium, std::vector<StadiumInfo> unsortedStadiums
 //    return graph;
 }
 
-void dfsbfs::DFS(QString start, std::vector<StadiumInfo> unsortedStadiums)
+int dfsbfs::DFS(int start, std::vector<StadiumInfo> unsortedStadiums, bool visited[31][31], int adj[31][31])
 {
-//    const int NUM_TEAMS = unsortedStadiums.size();
+    int totalDistance = 0;
+    const int NUM_TEAMS = unsortedStadiums.size();
 
-//    qDebug() << "Depth First Search:\n";
-//    int graph[31][31];
-//    vector<int> edges;
-//    getGraph("San Francisco Giants", unsortedStadiums, graph);
-//    vector<QString> accessed;
-//    vector<int> discovery;
-//    string end;
-//    int position = -1;
-//    int accum = 0;
-////    vertex *s = (work.find(start)->second);
 
-//    //Runs a loop while the accessed locations are less than the total list
-//    // of locations
-//    while(accessed.size() < NUM_TEAMS) // change to while
-//    {
+        // For every node of the graph
+        for (int i = 0; i < NUM_TEAMS; i++) {
 
-//        vertex *next = NULL;
-//        // If the item being visited has not yet been accessed then
-//        // output its name
-////        if (find(accessed.begin(), accessed.end(), s->name) == accessed.end())
-////        {
-//////            qDebug() << s->name << endl;
-////            accessed.push_back(s->name);
-////            position ++;
-////        }
+            // If some node is adjacent to the current node
+            // and it has not already been visited
+            if (adj[start][i] != 0 && (!visited[start][i])) {
+                visited[start][i] = true;
+                totalDistance = adj[start][i];
+//                qDebug()<< "DFS distance " << totalDistance;
+                totalDistance += DFS(i, unsortedStadiums, visited, adj);
+            }
+        }
+        ui->dfs_answer_label->setText(QString::number(totalDistance));
+    return totalDistance;
 
-//        // Stores all of the distances for the current verticy in a vector
-//        vector<int> dist;
-//        for(unsigned int i = 0; i < s->adj.size(); i++)
-//        {
-//            dist.push_back(s->adj[i].first);
-//        }
-//        // Sorts the vector of distances
-//        sort(dist.begin(), dist.end());
-//        vector<ve> sortedPairs;
-//        //Stores the stored distances back in to a pair vector that cointains
-//        //The pointed verticy
-//        for(unsigned int i = 0; i < dist.size(); i++)
-//        {
-//            unsigned int a = 0;
-//            while(dist[i] != s->adj[a].first) // change to while
-//            {
-//                a++;
-//            }
-//            sortedPairs.push_back(s->adj[a]);
-//            qDebug() << sortedPairs[a].first << sortedPairs[a].second;
-//        }
-//        unsigned int a = 0;
-//        bool escape;
-//        next = sortedPairs[a].second;
-//        // Will set escape based off of if the next name is in the list or not
-////        escape = (find(accessed.begin(), accessed.end(),next->name) != accessed.end());
-
-//        // Runs through a loop while the next element has not been found
-//        while(escape != false)
-//        {
-//            a++;
-//            if(a < sortedPairs.size())
-//            {
-//                next = sortedPairs[a].second;
-////                escape = (find(accessed.begin(), accessed.end(),next->name)
-////                        != accessed.end());
-//            }
-//            else
-//            {
-//                escape = false;
-//            }
-//        }
-
-//        // Will check if the program needs to backtrack
-//        if(a >= sortedPairs.size() && accessed.size() != NUM_TEAMS)
-//        {
-//            if(position != -1)
-//            {
-//                position --;
-////                s = (work.find(accessed[position])->second);
-//            }
-//        }
-//        // Stores the next location to be visited
-//        else
-//        {
-//            s = next;
-//            if(accessed.size() != NUM_TEAMS)
-//            {
-//                accum += sortedPairs[a].first;
-//                discovery.push_back(sortedPairs[a].first);
-//            }
-//        }
-//    }
-
-//    qDebug() << "This is the total trip distance: " << accum;
-
-//    // outputs the discovery edges
-//    qDebug() << endl << endl << "The discovery edges are distances:\n";
-//    for(unsigned int i = 0; i < discovery.size(); i ++)
-//    {
-//        vector<int>::iterator itr;
-//        itr = edges.begin();
-//        int a = 0;
-//        while(discovery[i] != edges[a])
-//        {
-//            a++;
-//            itr++;
-//        }
-//        edges.erase(itr);
-//    }
-//    // outputs the back edges
-//    qDebug() << endl << "The back edges are distances:\n";
-//    for(unsigned int i = 0; i < edges.size(); i ++)
-//    {
-//    }
 }
 void dfsbfs::BFS(int start, std::vector<StadiumInfo> unsortedStadiums)
 {
@@ -210,7 +116,7 @@ void dfsbfs::BFS(int start, std::vector<StadiumInfo> unsortedStadiums)
 //    priority_queue pq;
 
     int graph[31][31];
-    getGraph("San Francisco Giants", unsortedStadiums, graph);
+    getGraph("Minnesota Twins", unsortedStadiums, graph);
     int level = 0;
 
     // Set source as visited
@@ -306,10 +212,19 @@ dfsbfs::dfsbfs(QWidget *parent) :
     conn.connClose();
 
     plannedStadiums = sortStadiums("San Francisco Giants", allStadiums);
+    const int NUM_TEAMS = 31;                                                               // problem maybe
 
+//    vector<bool> visited(NUM_TEAMS, false);
     dfsbfs::BFS(bfsStart, plannedStadiums);
-//    dfsbfs::DFS(dfsStart, plannedStadiums);
+    int dfsDistance = -1;
 
+    int adj[31][31];
+    bool visited[31][31] = {false};
+    getGraph("San Francisco Giants", plannedStadiums, adj);
+
+    dfsDistance = dfsbfs::DFS(dfsStart, plannedStadiums, visited, adj);
+
+    qDebug() << "constructor " << dfsDistance;
 
 //void dfsbfs::BFS(int start, std::vector<StadiumInfo> unsortedStadiums)
 }
@@ -377,7 +292,7 @@ std::vector<StadiumInfo> dfsbfs::sortStadiums(QString startingStadium, std::vect
                     {
                         graph[i][j] = qry1;
                         graph[j][i] = qry1;
-                        qDebug() << "!!!! " << qry1;
+//                        qDebug() << "!!!! " << qry1;
                     }
                 }
             }
