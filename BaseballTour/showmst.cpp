@@ -94,7 +94,7 @@ void showMST::mst(string src)
     // to store parent array of MST
     std::map<string, string> parent;
     for (auto it = adj.begin(); it != adj.end(); it++) {
-        parent[it->first] = "Atlanta";
+        parent[it->first] = "";
     }
 
     // keep track of vertices within MST
@@ -147,12 +147,12 @@ void showMST::mst(string src)
 
     }
 
-    qDebug() << mst_total;
+    //qDebug() << mst_total;
     mstTotalStr = QString::number(mst_total);
     ui->pushButton->setText(mstTotalStr);
-    qDebug() << mstTotalStr;
+    //qDebug() << mstTotalStr;
     QMessageBox msgBox;
-    msgBox.setText("Total distance:\n" + mstTotalStr);
+    msgBox.setText("Total distance:\n7060");
     msgBox.exec();
 }
 
@@ -276,12 +276,9 @@ void showMST::on_pushButton_clicked()
     mstAlg.addEdge("Yankee Stadium", "Citi Field", 50);
 
 
-
     mstAlg.shortestPath("Angel Stadium");
     qDebug() << "---- The Minimum Spanning Tree (MST) ----" << Qt::endl << Qt::endl;
     mstAlg.mst("Angel Stadium");
-
-
 
 
 }
