@@ -5,6 +5,7 @@
 #include <QDialog>
 #include "ballparkdb.h"
 #include "triptake.h"
+#include "customtrip.h"
 #include <map>
 #include <algorithm>
 
@@ -56,6 +57,9 @@ void TripPlan::on_button_AutomaticTrip_clicked()
 
 void TripPlan::on_button_CustomTrip_clicked()
 {
+    CustomTrip * ct = new CustomTrip(scrapStadium(ui->dropdown_CollegeList_2->currentText()));
+    ct->exec();
+
     qDebug() << scrapStadium(ui->dropdown_CollegeList_2->currentText());
 }
 

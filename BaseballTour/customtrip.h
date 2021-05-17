@@ -1,35 +1,41 @@
-//#ifndef CUSTOMTRIP_H
-//#define CUSTOMTRIP_H
+#ifndef CUSTOMTRIP_H
+#define CUSTOMTRIP_H
 
-//#include <QDialog>
-//#include "dataBase.h"
+#include <QDialog>
+#include "stadiumstructs.h"
+#include "triptake.h"
+#include "tripplan.h"
 
-//namespace Ui {
-//class CustomTrip;
-//}
+namespace Ui {
+class CustomTrip;
+}
 
-//class CustomTrip : public QDialog
-//{
-//    Q_OBJECT
+class CustomTrip : public QDialog
+{
+    Q_OBJECT
 
-//public:
-//    explicit CustomTrip(const std::vector<College> &database, const int PREV_HOME, QWidget *parent = nullptr);
-//    ~CustomTrip();
+public:
+    explicit CustomTrip(const QString START, QWidget *parent = nullptr);
+    ~CustomTrip();
 
-//private slots:
-//    void on_buttonBox_accepted();
+private slots:
+    void on_buttonBox_accepted();
 
-//private:
-//    Ui::CustomTrip *ui;
-//    std::vector<College> sortColleges(int startingCollege, std::vector<College> collegesLeft, std::vector<College> collegesDone, std::vector<int> doneIndexes);
+private:
+    Ui::CustomTrip *ui;
+//    std::vector<StadiumInfo> sortStadiums(int startingStadium, std::vector<Stadium> StadiumsLeft, std::vector<Stadium> StadiumsDone, std::vector<int> doneIndexes);
 
-//    vector<College> displayColleges;
-//    vector<College> foundColleges;
-//    vector<College> allColleges;
+    std::vector<StadiumInfo> displayStadiums;
+    std::vector<StadiumInfo> foundStadiums;
+    std::vector<StadiumInfo> allStadiums;
 
-//    vector<int> alreadyDoneColleges;
-//    int startingCollege;
-//    int removedCollegeCount;
-//};
+    std::vector<StadiumInfo> alreadyDoneStadiums;
+    QString startingStadium;
+    int removedStadiumCount;
 
-//#endif // CUSTOMTRIP_H
+    int minimumDist(int dist[], bool Tset[], int max);
+    static bool sortByVal(const std::pair<int, int> &a, const std::pair<int, int> &b);
+    std::vector<StadiumInfo> sortStadiums(QString startingStadium, std::vector<StadiumInfo> unsortedStadiums);
+};
+
+#endif // CUSTOMTRIP_H
