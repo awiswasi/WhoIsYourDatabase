@@ -79,7 +79,122 @@ void getGraph(QString startingStadium, std::vector<StadiumInfo> unsortedStadiums
 //    return graph;
 }
 
+void dfsbfs::DFS(QString start, std::vector<StadiumInfo> unsortedStadiums)
+{
+//    const int NUM_TEAMS = unsortedStadiums.size();
 
+//    qDebug() << "Depth First Search:\n";
+//    int graph[31][31];
+//    vector<int> edges;
+//    getGraph("San Francisco Giants", unsortedStadiums, graph);
+//    vector<QString> accessed;
+//    vector<int> discovery;
+//    string end;
+//    int position = -1;
+//    int accum = 0;
+////    vertex *s = (work.find(start)->second);
+
+//    //Runs a loop while the accessed locations are less than the total list
+//    // of locations
+//    while(accessed.size() < NUM_TEAMS) // change to while
+//    {
+
+//        vertex *next = NULL;
+//        // If the item being visited has not yet been accessed then
+//        // output its name
+////        if (find(accessed.begin(), accessed.end(), s->name) == accessed.end())
+////        {
+//////            qDebug() << s->name << endl;
+////            accessed.push_back(s->name);
+////            position ++;
+////        }
+
+//        // Stores all of the distances for the current verticy in a vector
+//        vector<int> dist;
+//        for(unsigned int i = 0; i < s->adj.size(); i++)
+//        {
+//            dist.push_back(s->adj[i].first);
+//        }
+//        // Sorts the vector of distances
+//        sort(dist.begin(), dist.end());
+//        vector<ve> sortedPairs;
+//        //Stores the stored distances back in to a pair vector that cointains
+//        //The pointed verticy
+//        for(unsigned int i = 0; i < dist.size(); i++)
+//        {
+//            unsigned int a = 0;
+//            while(dist[i] != s->adj[a].first) // change to while
+//            {
+//                a++;
+//            }
+//            sortedPairs.push_back(s->adj[a]);
+//            qDebug() << sortedPairs[a].first << sortedPairs[a].second;
+//        }
+//        unsigned int a = 0;
+//        bool escape;
+//        next = sortedPairs[a].second;
+//        // Will set escape based off of if the next name is in the list or not
+////        escape = (find(accessed.begin(), accessed.end(),next->name) != accessed.end());
+
+//        // Runs through a loop while the next element has not been found
+//        while(escape != false)
+//        {
+//            a++;
+//            if(a < sortedPairs.size())
+//            {
+//                next = sortedPairs[a].second;
+////                escape = (find(accessed.begin(), accessed.end(),next->name)
+////                        != accessed.end());
+//            }
+//            else
+//            {
+//                escape = false;
+//            }
+//        }
+
+//        // Will check if the program needs to backtrack
+//        if(a >= sortedPairs.size() && accessed.size() != NUM_TEAMS)
+//        {
+//            if(position != -1)
+//            {
+//                position --;
+////                s = (work.find(accessed[position])->second);
+//            }
+//        }
+//        // Stores the next location to be visited
+//        else
+//        {
+//            s = next;
+//            if(accessed.size() != NUM_TEAMS)
+//            {
+//                accum += sortedPairs[a].first;
+//                discovery.push_back(sortedPairs[a].first);
+//            }
+//        }
+//    }
+
+//    qDebug() << "This is the total trip distance: " << accum;
+
+//    // outputs the discovery edges
+//    qDebug() << endl << endl << "The discovery edges are distances:\n";
+//    for(unsigned int i = 0; i < discovery.size(); i ++)
+//    {
+//        vector<int>::iterator itr;
+//        itr = edges.begin();
+//        int a = 0;
+//        while(discovery[i] != edges[a])
+//        {
+//            a++;
+//            itr++;
+//        }
+//        edges.erase(itr);
+//    }
+//    // outputs the back edges
+//    qDebug() << endl << "The back edges are distances:\n";
+//    for(unsigned int i = 0; i < edges.size(); i ++)
+//    {
+//    }
+}
 void dfsbfs::BFS(int start, std::vector<StadiumInfo> unsortedStadiums)
 {
     const int NUM_TEAMS = unsortedStadiums.size();
@@ -193,6 +308,8 @@ dfsbfs::dfsbfs(QWidget *parent) :
     plannedStadiums = sortStadiums("San Francisco Giants", allStadiums);
 
     dfsbfs::BFS(bfsStart, plannedStadiums);
+//    dfsbfs::DFS(dfsStart, plannedStadiums);
+
 
 //void dfsbfs::BFS(int start, std::vector<StadiumInfo> unsortedStadiums)
 }

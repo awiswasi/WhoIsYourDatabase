@@ -61,7 +61,7 @@ public:
 
         void addvertex(const QString&);
         void addedge(const QString& from, const QString& to, double dist);
-        void DFS(vector<QString> titles, vector<int> edges, QString start);
+        void DFS(QString start, std::vector<StadiumInfo> unsortedStadiums);
 
         void BFS(int start, std::vector<StadiumInfo> unsortedStadiums);
 
