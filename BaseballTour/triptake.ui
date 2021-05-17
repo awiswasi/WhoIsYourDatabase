@@ -186,6 +186,19 @@
     </property>
    </column>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>180</y>
+     <width>131</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Skip to End</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

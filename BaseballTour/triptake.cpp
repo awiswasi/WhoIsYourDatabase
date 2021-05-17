@@ -128,3 +128,10 @@ void TripTake::on_buyButton_clicked()
     ui->quantitySpinBox->setValue(0);
     conn.connClose();
 }
+
+void TripTake::on_pushButton_clicked()
+{
+    while(ui->push_next->isVisible()){
+        on_push_next_clicked();
+    }
+}
