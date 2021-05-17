@@ -79,7 +79,7 @@ void editTeam::on_expansionButton_clicked()
 {
     ui->lineEdit_teamname->setText("Las Vegas Gamblers");
     ui->lineEdit_stadiumname->setText("Las Vegas Stadium");
-    ui->lineEdit_seatingcapacity->setText("44,444");
+    ui->lineEdit_seatingcapacity->setText("44444");
     ui->lineEdit_location->setText("Las Vegas, Nevada");
     ui->lineEdit_playingsurface->setText("Grass");
     ui->lineEdit_league->setText("National");
