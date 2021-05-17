@@ -37,6 +37,11 @@
     </item>
     <item>
      <property name="text">
+      <string>Typology</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>Stadium Age</string>
      </property>
     </item>
@@ -410,36 +415,10 @@
      <string>Show</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>590</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>DFS:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>630</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>BFS:</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>830</x>
+      <x>810</x>
       <y>630</y>
       <width>47</width>
       <height>13</height>
@@ -462,6 +441,32 @@
      <string>Show</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="DFSBFS_Button">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>650</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>650</y>
+      <width>55</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DFS/BFS:</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -469,7 +474,7 @@
      <x>0</x>
      <y>0</y>
      <width>1455</width>
-     <height>20</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAdmin">

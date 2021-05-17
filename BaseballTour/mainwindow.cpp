@@ -94,39 +94,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->statusBar()->setSizeGripEnabled(false);
 
-//    QSqlDatabase souvenirsDB = QSqlDatabase::addDatabase("QSQLITE");
-//        souvenirsDB.setDatabaseName("../souvenirs.db");
 
-//        souvenirsDB.open();
-
-    // Set table properties (resize to contents, fill the widget with last section, prevent editing)
-//    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-//    ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
-//    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-//    ui->tableWidget->clear();
-//    ui->tableWidget->insertRow ( ui->tableWidget->rowCount() );
-//    ui->tableWidget->insertRow ( ui->tableWidget->rowCount() );
-
-
-//    createCList();
-
-//    ui->actionAdd_from_file->setEnabled(false);
     ui->actionLog_Out->setEnabled(false);
 
     ui->addButton->setVisible(false);
     ui->saveButton->setVisible(false);
     ui->editButton->setVisible(false);
     ui->addSouvenirButton->setVisible(false);
-
-//    connect(ui->homeBox,SIGNAL(activated(int)), this, SLOT(showColleges(int)));
-////    connect(ui->homeBox,SIGNAL(activated(int)), this, SLOT(displaySouvenirs(int)));
-//    connect(ui->campusTable,SIGNAL(currentRowChanged(int)), this, SLOT(displaySouvenirs(int)));
-//    connect(ui->campusTable,SIGNAL(currentRowChanged(int)), this, SLOT(getCollegeIndex(int)));
-
-    //isAdmin = false;
-
     ui->tableView->resizeColumnsToContents();
-//    ui->tableView->horizontalHeader()->stretchLastSection();
 
 }
 
@@ -153,6 +128,10 @@ void MainWindow::on_combo_sort_activated(const QString &arg1)
      else if (ui->combo_sort->currentText() == "Stadium")
      {
              qry->prepare("select * from _MLBinfo order by stadiumName");
+     }
+     else if (ui->combo_sort->currentText() == "Typology")
+     {
+             qry->prepare("select * from _MLBinfo order by ballparkTypology");
      }
      else if (ui->combo_sort->currentText() == "Stadium Age")
      {
@@ -761,3 +740,273 @@ void MainWindow::on_showMSTButton_clicked()
     mst->show();
 }
 
+//void MainWindow::mst()
+//{
+//    DistanceInfo tempdist;
+//    DistanceInfo tempvert;
+//    BallparkDB conn;
+//    conn.connOpen();
+//    QSqlQuery * qry = new QSqlQuery(conn.mydb);
+
+//    qry->prepare("select * from _DISTANCES");
+//    qry->exec();
+
+//    int count = 0;
+
+
+// // Reading in edges
+//    while(qry->next()) //these seem to be coming out in alphabetical order by default
+//    {
+//        tempdist.startStad = qry->value(0).toString();
+//        tempdist.endStad = qry->value(1).toString();
+//        tempdist.distance = qry->value(2).toInt();
+//        distances.push_back(tempdist);
+//        count++;
+//    }
+
+//    while(qry->next())
+//    {
+//        tempvert.startStad = qry->value(0).toString();
+//    }
+
+//    conn.connClose();
+//}
+
+
+//void MainWindow::graphmst()
+//{
+//    vertexCount = 0;
+
+//    // Initializing all city names to a blank space
+//    for (int index = 0; index < 32; index++)
+//    {
+//        vertexList[index] = " ";
+//    }
+
+
+//    // initializing all distances to 0
+//    for (unsigned int row = 0; row < 32; row++)
+//    {
+//        for (unsigned int col = 0; col < 32; col++)
+//        {
+//            graph[row][col] = 0;
+//        }
+//    }
+
+//}
+
+//// destructor
+//graphmst::~graphmst(){}
+
+
+//void graphmst::insertEdge(const QString inCity1, const QString inCity2, const int inDistance)
+//{
+//    int row = 0;
+//    int col = 0;
+//    bool found = false;
+
+
+//    // finding where to insert (row should be inCity1, col should be inCity2)
+//    while (row < MAX_CITIES && !found)
+//    {
+//        while (col < MAX_CITIES && !found)
+//        {
+//            if (vertexList[row] == inCity1 && vertexList[col] == inCity2)
+//            {
+//                found = true;
+
+//                // stores the distance between i and j
+//                graph[row][col] = inDistance;
+//                graph[col][row] = inDistance;
+
+//            }
+//            else
+//            {
+//                col++;
+//            }
+//        }
+
+//        // resetting columns
+//        col = 0;
+
+//        if(!found)
+//        {
+//            row++;
+//        }
+//    }
+
+//    if (!found)
+//    {
+//        cout << "\n\nMUST INSERT CITIES FIRST\n\n";
+//    }
+//}
+
+
+//void graphmst::insertVertex(const QString inCity)
+//{
+
+//    if (vertexCount != MAX_CITIES)
+//    {
+//        vertexList[vertexCount] = inCity;
+//        vertexCount++;
+//    }
+//    else
+//    {
+//        cout << "\n\nGraph is full!\n\n";
+//    }
+//}
+
+
+//// A utility function to find the vertex with minimum key value, from
+//// the set of vertices not yet included in MST
+//int graphmst::minKey(int key[], bool mstSet[])
+//{
+//   // Initialize min value
+//   int min = INT_MAX, min_index;
+
+//   for (int v = 0; v < MAX_CITIES; v++)
+//   {
+//       if (mstSet[v] == false && key[v] < min)
+//       {
+//           min = key[v], min_index = v;
+//       }
+//   }
+
+
+//   return min_index;
+//}
+
+
+
+//void graphmst::DisplayMST(int parent[], int n, QTextBrowser *inTable)
+//{
+
+//        int totalDistance = 0;
+//        stringstream ss;
+
+//        ss << left;
+
+//        ss << "Creating MST and printing edges and total mileage...\n\n";
+//        ss << "(FORMAT INFORMATION)\n";
+//        ss << setw(14) << "Initial City" << "---->  "
+//             << setw(14) << "Ending City" << "   - Distance: (Distance between)";
+//        ss << "\n\n";
+
+
+//        for (int index = 1; index < vertexCount; index++)
+//        {
+//            ss << setw(14) << vertexList[parent[index]].toStdString() << "---->  "
+//                 << setw(14) << vertexList[index].toStdString() << "   - Distance: " << graph[parent[index]][index];
+//            ss << "\n";
+
+//            totalDistance += graph[parent[index]][index];
+//        }
+
+//        ss << "\nTotal Distance: " << totalDistance << endl;
+
+
+//        ss << right;
+
+//        inTable->setText(QString::fromStdString(ss.str()));
+//}
+
+
+//// Function to construct and print MST for a graph represented using adjacency
+//// matrix representation
+//void graphmst::primMST(QTextBrowser *inTable)
+//{
+//     int parent[vertexCount]; // Array to store constructed MST
+//     int key[vertexCount];   // Key values used to pick minimum weight edge in cut
+//     bool mstSet[vertexCount];  // To represent set of vertices not yet included in MST
+
+//     // Initialize all keys as INFINITE
+//     for (int i = 0; i < vertexCount; i++)
+//     {
+//         key[i] = INT_MAX, mstSet[i] = false;
+//     }
+
+//     // Always include first 1st vertex in MST.
+//     key[0] = 0;     // Make key 0 so that this vertex is picked as first vertex
+//     parent[0] = -1; // First node is always root of MST
+
+//     // The MST will have MAX_CITIES vertices
+//     for (int count = 0; count < vertexCount-1; count++)
+//     {
+//        // Pick the minimum key vertex from the set of vertices
+//        // not yet included in MST
+//        int u = minKey(key, mstSet);
+
+//        // Add the picked vertex to the MST Set
+//        mstSet[u] = true;
+
+//        // Update key value and parent index of the adjacent vertices of
+//        // the picked vertex. Consider only those vertices which are not yet
+//        // included in MST
+//        for (int v = 0; v < vertexCount; v++)
+//        {
+//            // graph[u][v] is non zero only for adjacent vertices of m
+//            // mstSet[v] is false for vertices not yet included in MST
+//            // Update the key only if graph[u][v] is smaller than key[v]
+//           if (graph[u][v] && mstSet[v] == false && graph[u][v] <  key[v])
+//           {
+//              parent[v]  = u, key[v] = graph[u][v];
+//           }
+//        }
+
+//     }
+
+//     // print the constructed MST
+//     DisplayMST(parent, vertexCount, inTable);
+//}
+
+
+//bool graphmst::CityExists(const QString& inCity)
+//{
+//    bool found = false;
+//    int index = 0;
+
+//    while (index < MAX_CITIES && !found)
+//    {
+//        if (vertexList[index] == inCity)
+//        {
+//            found = true;
+//        }
+//        else
+//        {
+//            index++;
+//        }
+//    }
+
+//    return found;
+
+
+//}
+
+
+//void graphmst::ReadInfo(QVector<DistanceInfo> edgeList)
+//{
+
+//    // Reading in city names
+//    for (int index = 0; index < edgeList.size(); index++)
+//    {
+//        if (!CityExists(edgeList[index].startStad))
+//        {
+//            insertVertex(edgeList[index].startStad);
+//        }
+//    }
+
+
+
+
+//    // Reading in edges
+//    for (int index = 0; index < edgeList.size(); index++)
+//    {
+//        insertEdge(edgeList[index].startStad, edgeList[index].endStad, edgeList[index].distance);
+//    }
+//}
+
+void MainWindow::on_DFSBFS_Button_clicked()
+{
+    dfs = new dfsbfs(this);
+    dfs->show();
+}

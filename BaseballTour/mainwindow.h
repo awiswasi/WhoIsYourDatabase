@@ -22,6 +22,8 @@
 #include "planyourtrip.h"
 #include "tripplan.h"
 #include "showmst.h"
+#include "dfsbfs.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -288,7 +290,7 @@ class MainWindow : public QMainWindow
             }
 
             void on_editButton_clicked();
-
+//            void mst();
 
             void on_push_plan_clicked();
 
@@ -296,7 +298,24 @@ class MainWindow : public QMainWindow
 
             void on_showSmallest_clicked();
 
+//<<<<<<< Updated upstream
             void on_showMSTButton_clicked();
+//=======
+
+//            void insertEdge(const QString inCity1, const QString inCity2, const int inDistance);
+//            void insertVertex(const QString inCity);
+//            void graphmst();
+//            //Accessors
+//            void primMST(QTextBrowser *inTable);
+//            void ReadInfo(QVector<DistanceInfo> edgeList);
+//            bool CityExists(const QString& inCity);
+//            void DisplayMST(int parent[], int n, QTextBrowser *inTable);
+
+
+
+//>>>>>>> Stashed changes
+
+            void on_DFSBFS_Button_clicked();
 
 private:
         bool isAdmin;
@@ -327,9 +346,20 @@ private:
         QVector<int> selectInd;
         QVector<QVector<CurrLocal>> selectDist;
         TripPlan *planTrip;
+        dfsbfs *dfs;
+//<<<<<<< Updated upstream
         showMST *mst;
         std::vector<DistanceInfo> distances;
 
+//=======
+        //std::vector<DistanceInfo> distances;
+
+//        int vertexCount;
+//        QString vertexList[32];
+//        int graph[32][32];
+
+//        int minKey(int key[], bool mstSet[]);
+//>>>>>>> Stashed changes
 
 
     public:

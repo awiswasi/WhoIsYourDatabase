@@ -12,6 +12,7 @@ SOURCES += \
     ballparkdb.cpp \
     customtrip.cpp \
     dbmanager.cpp \
+    dfsbfs.cpp \
     distancesdb.cpp \
     editteam.cpp \
     graph.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     ballparkdb.h \
     customtrip.h \
     dbmanager.h \
+    dfsbfs.h \
     distancesdb.h \
     editteam.h \
     graph.h \
@@ -49,6 +51,7 @@ HEADERS += \
 FORMS += \
     addsouvenir.ui \
     customtrip.ui \
+    dfsbfs.ui \
     editteam.ui \
     logindialog.ui \
     mainwindow.ui \
