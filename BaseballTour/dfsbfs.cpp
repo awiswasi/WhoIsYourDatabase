@@ -92,12 +92,13 @@ int dfsbfs::DFS(int start, std::vector<StadiumInfo> unsortedStadiums, bool visit
             // and it has not already been visited
             if (adj[start][i] != 0 && (!visited[start][i])) {
                 visited[start][i] = true;
+                visited[i][start] = true;
                 totalDistance = adj[start][i];
 //                qDebug()<< "DFS distance " << totalDistance;
                 totalDistance += DFS(i, unsortedStadiums, visited, adj);
             }
         }
-        ui->dfs_answer_label->setText(QString::number(totalDistance));
+        ui->dfs_answer_label->setText(QString::number(totalDistance/2));
     return totalDistance;
 
 }
