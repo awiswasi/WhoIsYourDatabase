@@ -129,6 +129,9 @@ void addsouvenir::on_editSouvenirButton_clicked()
         msgBox.exec();
         return;
     }
+    if(ui->souvenirNameText->text() == ""){
+        ui->souvenirNameText->setText(ui->comboBox->currentText());
+    }
     on_deleteButton_clicked();
     on_addSouvenirButton_clicked();
 }

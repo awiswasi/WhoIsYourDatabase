@@ -118,7 +118,6 @@ void dfsbfs::BFS(int start, std::vector<StadiumInfo> unsortedStadiums)
 
     int graph[31][31];
     getGraph("Minnesota Twins", unsortedStadiums, graph);
-    int level = 0;
 
     // Set source as visited
     visited[start] = true;
