@@ -80,6 +80,24 @@
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;college name here&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_distance">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>110</y>
+     <width>341</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>college name here</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

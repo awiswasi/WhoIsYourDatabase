@@ -230,12 +230,15 @@ std::vector<StadiumInfo> TripPlan::sortStadiums(QString startingStadium, std::ve
     sort(vec.begin(),vec.end(),sortByVal);
 
     vector<StadiumInfo> sortedStadiums;
+    StadiumInfo tempTeam;
 
     for(int i = 0; i < NUM_TEAMS; i++)
     {
         qDebug() << unsortedStadiums[vec[i].first].stadiumName << QString::number(vec[i].second);
 
-        sortedStadiums.push_back(unsortedStadiums[vec[i].first]);
+        tempTeam = unsortedStadiums[vec[i].first];
+        tempTeam.distanceNeeded = vec[i].second;
+        sortedStadiums.push_back(tempTeam);
     }
 
     return sortedStadiums;

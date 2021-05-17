@@ -40,6 +40,7 @@ void TripTake::on_push_next_clicked()
     ui->label_stadium->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     ui->tableView->setModel(modal);
     ui->tableView->resizeColumnsToContents();
+    ui->label_distance->setText(QString::number(stadiums[currentStadium].distanceNeeded));
 
     currentStadium++;
 

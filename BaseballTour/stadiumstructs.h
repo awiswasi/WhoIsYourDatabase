@@ -15,7 +15,7 @@ struct StadiumInfo
     QString    roofType;
     int        distanceToCenter;
     QString    location;
-    int        distanceNeeded;
+    int        distanceNeeded = 0;
 };
 
 
