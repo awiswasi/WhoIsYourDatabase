@@ -28,6 +28,8 @@ private:
     std::vector<StadiumInfo> stadiums;
     Ui::TripTake *ui;
     int currentStadium = 0;
+    double grandTotal = 0;
+    int totalSouvenirs = 0;
 };
 
 #endif // TRIPTAKE_H
