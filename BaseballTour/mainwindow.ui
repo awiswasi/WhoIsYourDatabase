@@ -6,330 +6,51 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1410</width>
-    <height>686</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Baseball Team Trip Planner</string>
-  </property>
-  <property name="windowIcon">
-   <iconset resource="team.qrc">
-    <normaloff>:/resources/icon.png</normaloff>:/resources/icon.png</iconset>
-  </property>
-  <property name="toolTip">
-   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QComboBox" name="combo_sort">
+   <widget class="QPushButton" name="displayCities">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>130</y>
-      <width>191</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Team</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Stadium Age</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Stadium</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Capacity</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Location</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Surface</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>League</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Center Field</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Roof Type</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QLabel" name="label_sort">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>110</y>
-      <width>51</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Sort By</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="combo_team">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>480</y>
-      <width>191</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Select Team</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QPushButton" name="push_souvenirs">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>530</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Souvenirs</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="push_plan">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>530</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Trip</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_logo">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="team.qrc">:/resources/logo.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>450</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_dbstatus">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>440</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>status :)</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="reload_button">
-    <property name="geometry">
-     <rect>
-      <x>1010</x>
-      <y>570</y>
-      <width>93</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reload Table</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Ami_League_Button">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>170</y>
-      <width>131</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>American League</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Nat_Leagu_Button">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>200</y>
-      <width>131</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>National League</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Open_Roof_Button">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>230</y>
-      <width>131</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Open Roof Type</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="greatest_dist_button">
-    <property name="geometry">
-     <rect>
-      <x>1120</x>
-      <y>50</y>
-      <width>251</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Greatest Distance to Center</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="smallest_dist_button">
-    <property name="geometry">
-     <rect>
-      <x>1120</x>
-      <y>90</y>
-      <width>251</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Smallest Distance to Center</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="total_Cap_Button">
-    <property name="geometry">
-     <rect>
-      <x>1120</x>
+      <x>210</x>
       <y>190</y>
-      <width>251</width>
+      <width>311</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Display Cities</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="planYourTripButton">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>270</y>
+      <width>311</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Plan Your Trip</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="adminButton">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>490</y>
+      <width>271</width>
       <height>28</height>
      </rect>
     </property>
     <property name="text">
-     <string>Total Capacity of All Major League Teams</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="total_open_button">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>570</y>
-      <width>321</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Total Number of Teams with open Roof Type</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Total_Cap_Label">
-    <property name="geometry">
-     <rect>
-      <x>1120</x>
-      <y>240</y>
-      <width>131</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Total_Open_Label">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>580</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="tableView">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>30</y>
-      <width>601</width>
-      <height>501</height>
-     </rect>
+     <string>Admin</string>
     </property>
    </widget>
   </widget>
@@ -338,15 +59,13 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1410</width>
+     <width>800</width>
      <height>26</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="team.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
